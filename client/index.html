@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>One For One</title>
+	
+	<link rel="stylesheet" href="./styles/styles.css">
+	<link rel="stylesheet" href="./lib/angular-material/angular-material.css">
+	
+	<!-- Scripts for Angular -->
+	<script src="./lib/angular/angular.js"></script>
+	<script src="./lib/angular-route/angular-route.js"></script>
+	<script src="./lib/angular-animate/angular-animate.js"></script>
+	
+	<!-- Scripts for Angular Material Design -->
+	<script src="./lib/angular-aria/angular-aria.js"></script>
+	<script src="./lib/angular-messages/angular-messages.js"></script>
+	<script src="./lib/angular-material/angular-material.js"></script>	
+
+	<script src="./app.js"></script>
+	<script src="./browse/browse.js"></script>
+	<script src="./create/create.js"></script>
+	<script src="./factories/factories.js"></script>
+
+	<script src="./auth/signin.js"></script>
+	<script src="./auth/signup.js"></script>
+
+		
+</head>
+<body>
+
+
+	<h1>One For One: Meals to Share</h1>
+
+	<div class="navigation">
+	<ul>
+	   <li><a href = "#/browse">Browse Meal</a></li>
+	   <li><a href = "#/create">Create Meal</a></li>
+	</ul>
+    </div>
+
+
+	<div ng-app="oneApp" ng-view></div> 
+
+
+	
+</body>
+</html>
