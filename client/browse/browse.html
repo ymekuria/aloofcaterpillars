@@ -26,7 +26,7 @@
 </head>
 <body>
 
-<div ng-controller="DemoCtrl" layout="column" ng-cloak="" class="md-inline-form inputdemoBasicUsage" ng-app="MyApp">
+<div ng-controller="DemoCtrl" layout="column" ng-cloak="" class="md-inline-form inputdemoBasicUsage" ng-app="browse">
 
 
     <div>
@@ -35,34 +35,64 @@
         <div layout-gt-sm="row">
           <md-input-container class="md-block" flex-gt-sm="">
             <label>Search all meals </label>
-            <input ng-model="user.firstName">
+            <input type="text" ng-model="user.input">
           </md-input-container>
 
-<div class="md-padding selectdemoOptionGroups" ng-cloak="" >
-  <div>
-    
-    <div layout="row">
-      <md-input-container>
-        <label>Search by Protein</label>
-        <md-select ng-model="topping">
-          <md-optgroup label="Meats">
-            <md-option ng-value="topping.name" ng-repeat="topping in toppings | filter: {category: 'meat' }">{{topping.name}}</md-option>
-          </md-optgroup>
-          <md-optgroup label="Veggies">
-            <md-option ng-value="topping.name" ng-repeat="topping in toppings | filter: {category: 'veg' }">{{topping.name}}</md-option>
-          </md-optgroup>
-        </md-select>
-      </md-input-container>
-    </div>
-    <p ng-if="topping">You chose a meal with {{topping.toLowerCase()}}.</p>
-  </div>
-</div>
+					  <div>
+					    
+					    
+					      <md-input-container>
+					        <label>Search by Protein</label>
+					        <md-select ng-model="ingredient" ng-selected="searchIngredient(ingredient)" >
+					          <md-optgroup label="Meats">
+					            <md-option ng-value="ingredient.name" ng-repeat="ingredient in proteins | filter: {category: 'meat' }" >{{ingredient.name}}</md-option>
+					          </md-optgroup>
+					          <md-optgroup label="Veggies">
+					            <md-option ng-value="ingredient.name" ng-repeat="ingredient in proteins | filter: {category: 'veg' }" >{{ingredient.name}}</md-option>
+					          </md-optgroup>
+					        </md-select>
+					      </md-input-container>
+					    
+					    <p ng-if="ingredient">Displaying meals containing {{ingredient.toLowerCase()}}.</p>
+					  </div>
+					
 
         </div>
       </form>
     </div>
+    <!--<div ng-repeat='for meal in $meals' | filter: user.input>-->
+			<div class='carddemoBasicUsage'>
+			  <md-content class="md-padding" layout="row" layout-wrap="" layout-align="center start" layout-xs="column" >
+			    <div flex="50" flex-sm="100" flex-xs="100" layout="column">
+			      <md-card>
+			        <md-card-title>
+			          <md-card-title-text>
+			            <span class="md-headline">Card with image</span>
+			            <span class="md-subhead">Large</span>
+			          </md-card-title-text>
+			          <md-card-title-media>
+			            <div class="md-media-lg card-media"></div>
+			          </md-card-title-media>
+			        </md-card-title>
+			        <md-card-actions layout="row" layout-align="end center">
+			          <md-button>Request an exchange</md-button>
+			          <md-button>Add to favorites</md-button>
+			        </md-card-actions>
+			      </md-card>
+			     
+			    </div>
+			  </md-content>
+			  </div>
+		  <!--</div> --> <!-- last div for the ng-repeat DemoCtrl -->
+
 
 </div><!-- last div for the ng-controller DemoCtrl -->
 
 <hr class="hr1">
+
+
+
+
+
+
 </body></html>

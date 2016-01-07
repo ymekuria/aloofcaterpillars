@@ -1,12 +1,13 @@
 angular
-  .module('browse',['ngMaterial', 'ngMessages'])
-  .controller('DemoCtrl', function($scope) {
+  .module('browse',['ngMaterial', 'ngMessages', 'factories'])
+  .controller('DemoCtrl',   function($scope, Meals) {
+
     $scope.user = {
-      firstName: '',
-      lastName: '',
+      input: '',
     };
 
-    $scope.toppings = [
+
+    $scope.proteins = [
       { category: 'meat', name: 'Chichen' },
       { category: 'meat', name: 'Beef' },
       { category: 'meat', name: 'Pork' },
@@ -16,6 +17,18 @@ angular
       { category: 'veg', name: 'Protein Shake' },
       { category: 'veg', name: 'Grass' }
     ];
+
+    // Meals.getAllMeals().then(function(data){
+    //   console.log('data');
+    // })
+
+    $scope.searchIngredient = function(ingredient){
+      console.log( ingredient, "selected");
+        // searchByIngredient(ingredient).then(function(data){
+        //   console.log('data');
+        // })
+    };
+
   })
   .config(function($mdThemingProvider) {
 
@@ -23,4 +36,7 @@ angular
       .primaryPalette('yellow')
       .dark();
 
+
+
   });
+
