@@ -1,4 +1,4 @@
-angular.module('factories', [])
+angular.module('factories', ['ngMaterial', 'ngMessages'])
 
 .factory('Meals', function($http) {
   
