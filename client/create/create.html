@@ -11,15 +11,13 @@
 		
 		<md-input-container class="md-block">
 		<label>Username</label>
-		<input required name="clientName" ng-model="meal.creator">
+		<input required ng-model="creator">
 		
-		<div ng-messages="createForm.clientName.$error">
-			<div ng-message="required">This is required.</div>
-		</div>
+	
 		</md-input-container>
 		<md-input-container class="md-block">
 		<label>Describe your meal!</label>
-		<input required md-maxlength="30" required name="description" ng-model="meal.description">
+		<input required md-maxlength="30" required name="description" ng-model="description">
 		
 		<div ng-messages="createForm.description.$error">
 			<div ng-message="required">This is required.</div>
@@ -55,14 +53,14 @@
 						</md-menu>
 					</div>
 					<div layout="column" flex="33" flex-sm="100" layout-align="center center">
-						<p>Minor Ingredient</p>
+						<p>Dietary Restrictions</p>
 						<md-menu md-offset="0 -7">
 						<md-button ng-click="$mdOpenMenu($event)">
 						<md-icon>group</md-icon>
 						</md-button>
 						<md-menu-content width="2">
-						<md-menu-item ng-repeat="item in [1, 2, 3]">
-						<md-button ng-click="ctrl.announceClick($index)"> <span md-menu-align-target>Option</span> {{item}} </md-button>
+						<md-menu-item ng-repeat="item2 in ['Vegetarian', 'Paleo', 'Gluten-Free', 'Low-Carb']">
+						<md-button ng-click="ctrl.announceClick($index)"> <span md-menu-align-target></span> {{item2}} </md-button>
 						</md-menu-item>
 						</md-menu-content>
 						</md-menu>
@@ -75,7 +73,7 @@
 						</md-button>
 						<md-menu-content width="2">
 						<md-menu-item ng-repeat="item in [1, 2, 3]">
-						<md-button ng-click="ctrl.announceClick($index)"> <span md-menu-align-target>Option</span> {{item}} </md-button>
+						<md-button ng-click="ctrl.announceClick($index)"> <span md-menu-align-target>Option</span> {{item3}} </md-button>
 						</md-menu-item>
 						</md-menu-content>
 						</md-menu>
