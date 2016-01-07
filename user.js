@@ -9,6 +9,11 @@ var mongoose = require('mongoose');
 var userSchema = mongoose.schema({
   name: String,
   password: String,
+  //question here: what exactly is meal? objects aren't valid mongoose schema types, so will need to change this
+  //maybe should be an array of nested arrays/values?
   meal: Object
 });
 
+var User = mongoose.model('User', userSchema);
+
+module.exports = User; 
