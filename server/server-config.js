@@ -5,8 +5,12 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
+var Meal = require('./db/meals/meal');
+var MealController = require('./db/meals/mealController');
+var User = require('./db/users/user');
+var UserController = require('./db/users/userController');
 
-// var db = require('../dbconfig');// uncomment when this is ready
+var db = require('./db/dbconfig');// uncomment when this is ready
 
 // TODO- add these modules later
 // utils = require('./utils');
@@ -22,9 +26,18 @@ app.use(express.static(__dirname + '/../client'));// this serves all the static 
 // app.use(express.cookieParser('shhhh, very secret'));// used for Auth uncomment when ready
 // app.use(express.session()); // used for Auth
 
-app.post('/api/create', function (res, resp){
+app.post('/api/create', function (req, resp, next){
 
-resp.send('First Post!');
+
+  var myMeal = new Meal({ title: 'fried chicken' });
+
+  myMeal.save(function (err, meal) {
+    if ( err ) {
+      return next(err);
+    }
+    resp.json(201, meal);
+  });
+
 });
 // Auth
 // app.get('/api/signin', function (res,resp){

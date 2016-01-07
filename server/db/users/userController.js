@@ -1,5 +1,5 @@
 var Q = require('q');
-var db = require('./dbconfig.js');
+var db = require('../dbconfig.js');
 var User = require('./user.js');
 
 //findone is the actual mongoose method, and it is being called on the User model provided as the second arg. 
