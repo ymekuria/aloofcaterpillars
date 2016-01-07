@@ -17,6 +17,7 @@ angular.module('factories', [])
     'Vegetarian', 'Paleo',  'Gluten-Free', 'Low-Carb'
   ]
 
+
   var storeMeal = function(meal) {
     return $http({
       method: 'POST',
@@ -51,13 +52,12 @@ angular.module('factories', [])
     })
   }
 
-
-
   return {
     storeMeal: storeMeal,
     ingredients: ingredients,
-    restrictions: restrictions,
+    restrictions: restrictions
     getAllMeals: getAllMeals,
     searchByIngredient: searchByIngredient
   }
+
 })
