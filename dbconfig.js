@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var q = require('q'); 
+var Q = require('q'); 
 //create mongoose database connection with name database
 mongoose.connect('mongodb://localhost/database');
 
