@@ -13,24 +13,16 @@ var findAllMeals = Q.nbind(Meal.find, Meal);
 module.exports = {
   //create method that takes req, res, and next
   create: function(req, res, next){
-  	//calls findmeal, searching the db for a meal with the title of the meal passed in the post request
-    findMeal({title : req.body.creator})
-      //if it's found, return an error saying the meal is already in the database
-	  .then(function (meal){
-	    if (meal){
-		    next(new Error('Meal is already in Mongo database'));
-		  //otherwise return a new instance of Meal model, setting its properties according to the post request.
-		  } else {
-	      return createMeal({
+       createMeal({
 		      picture: req.body.picture, 
   			  description: req.body.description,
   			  title: req.body.title,
-  			  topThreeIngredients: req.body.topThreeIngredients,
+  			  protein: req.body.protein,
   			  creator: req.body.creator,
   			  consumer: req.body.consumer
-		    });
-		  }
-	  })
+		    }).then(function(){
+          res.send(201,'success');
+        });
   }, 
 
   allMeals: function(req, res, next) {
@@ -47,11 +39,11 @@ module.exports = {
     findMeal({creator: req.body.creator})
       .then(function(match) {
         if(match) {
-          res.send(match)
+          res.send(match);
         }
-      })
+      });
   }
-}
+};
 
 
   
