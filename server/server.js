@@ -11,3 +11,5 @@ var server = app.listen(port, function(){
   var port = server.address().port;
   console.log('One2One server listening on: ', host, port);
 });
+
+module.exports = app;

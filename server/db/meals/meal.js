@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 
-var db = require('./config');
+var db = require('../dbconfig');
 
-var mealSchema = mongoose.schema({
+var mealSchema = mongoose.Schema({
   picture: String, 
   description: String,
   title: String,

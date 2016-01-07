@@ -23,9 +23,7 @@ var app = require('../server/server-config');
 
 // });
 
-// app.post('/ap/create', function (res, resp){
 
-// });
 
 
 
