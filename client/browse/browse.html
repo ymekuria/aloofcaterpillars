@@ -1,1 +1,68 @@
-<h1>Browse</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>One For One</title>
+	<!-- Scripts for Angular -->
+	<script src="./../lib/angular/angular.js"></script>
+	<script src="./../lib/angular-route/angular-route.js"></script>
+	<script src="./../lib/angular-animate/angular-animate.js"></script>
+	
+	<!-- Scripts for Angular Material Design -->
+	<script src="./../lib/angular-aria/angular-aria.js"></script>
+	<script src="./../lib/angular-messages/angular-messages.js"></script>
+	<script src="./../lib/angular-material/angular-material.js"></script>	
+
+	<script src="./../app.js"></script>
+	<script src="./../browse/browse.js"></script>
+	<script src="./../create/create.js"></script>
+	<script src="./../factories/factories.js"></script>
+
+	<script src="./../auth/signin.js"></script>
+	<script src="./../auth/signup.js"></script>
+
+<link rel="stylesheet" href="./../styles/styles.css">
+<link rel="stylesheet" href="./../lib/angular-material/angular-material.css">
+</head>
+<body>
+
+<div ng-controller="DemoCtrl" layout="column" ng-cloak="" class="md-inline-form inputdemoBasicUsage" ng-app="MyApp">
+
+
+    <div>
+      <form name="userForm">
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>Search all meals </label>
+            <input ng-model="user.firstName">
+          </md-input-container>
+
+<div class="md-padding selectdemoOptionGroups" ng-cloak="" >
+  <div>
+    
+    <div layout="row">
+      <md-input-container>
+        <label>Search by Protein</label>
+        <md-select ng-model="topping">
+          <md-optgroup label="Meats">
+            <md-option ng-value="topping.name" ng-repeat="topping in toppings | filter: {category: 'meat' }">{{topping.name}}</md-option>
+          </md-optgroup>
+          <md-optgroup label="Veggies">
+            <md-option ng-value="topping.name" ng-repeat="topping in toppings | filter: {category: 'veg' }">{{topping.name}}</md-option>
+          </md-optgroup>
+        </md-select>
+      </md-input-container>
+    </div>
+    <p ng-if="topping">You chose a meal with {{topping.toLowerCase()}}.</p>
+  </div>
+</div>
+
+        </div>
+      </form>
+    </div>
+
+</div><!-- last div for the ng-controller DemoCtrl -->
+
+<hr class="hr1">
+</body></html>
