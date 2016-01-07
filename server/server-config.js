@@ -22,5 +22,33 @@ app.use(express.static(__dirname + '/../client'));// this serves all the static 
 // app.use(express.cookieParser('shhhh, very secret'));// used for Auth uncomment when ready
 // app.use(express.session()); // used for Auth
 
+app.post('/api/create', function (res, resp){
+
+resp.send('First Post!');
+});
+// Auth
+// app.get('/api/signin', function (res,resp){
+
+// });
+
+// app.post('/api/signin', function (res, resp){
+
+// });
+
+// // browse
+// app.get('/api/browse', function (res,resp){
+
+// });
+
+// app.post('/api/browse', function (res, resp){
+
+// });
+
+// // create
+// app.get('/api/create', function (res,resp){
+
+// });
+
+
 
 module.exports = app;
