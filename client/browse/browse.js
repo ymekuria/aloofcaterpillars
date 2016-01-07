@@ -6,6 +6,7 @@ angular
       lastName: '',
     };
 
+
     $scope.toppings = [
       { category: 'meat', name: 'Chichen' },
       { category: 'meat', name: 'Beef' },
@@ -16,6 +17,19 @@ angular
       { category: 'veg', name: 'Protein Shake' },
       { category: 'veg', name: 'Grass' }
     ];
+
+    $http({
+      method:'GET',
+      url:'api/getAllMeals'
+    }).success(function(data){
+
+      $scope.title = data.title;
+      $scope.description = data.description;
+      $scope.photo = data.photo; 
+
+    }).error(function(){
+      alert('error');
+    })
 
 
   })
@@ -29,4 +43,3 @@ angular
 
   });
 
-  
