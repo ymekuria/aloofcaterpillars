@@ -1,5 +1,5 @@
 angular
-  .module('MyApp',['ngMaterial', 'ngMessages'])
+  .module('browse',['ngMaterial', 'ngMessages'])
   .controller('DemoCtrl', function($scope) {
     $scope.user = {
       firstName: '',

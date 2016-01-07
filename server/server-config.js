@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 
 // TODO- add these modules later
 // utils = require('./utils');
-routes = require('./routes');
+routes = require('../server-routes/routes');
 
 var app = express();
 
