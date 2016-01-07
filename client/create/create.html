@@ -1,1 +1,96 @@
 <h1>Create</h1>
+<div class="createForm" ng-controller='createCtrl' ng-cloak>
+	<md-content layout-padding>
+	<md-card>
+	<form name="createForm">
+		<md-card-title>
+		<md-card-title-text>
+		<span class="md-headline">Enter your meal</span>
+		</md-card-title-text>
+		</md-card-title>
+		
+		<md-input-container class="md-block">
+		<label>Username</label>
+		<input required name="clientName" ng-model="meal.creator">
+		
+		<div ng-messages="createForm.clientName.$error">
+			<div ng-message="required">This is required.</div>
+		</div>
+		</md-input-container>
+		<md-input-container class="md-block">
+		<label>Describe your meal!</label>
+		<input required md-maxlength="30" required name="description" ng-model="meal.description">
+		
+		<div ng-messages="createForm.description.$error">
+			<div ng-message="required">This is required.</div>
+			<div ng-message="md-maxlength">Shorten it!</div>
+		</div>
+		
+		</md-input-container>
+		<md-input-container class="md-block">
+		<label>Quantity (# of servings)</label>
+		<input required type="number" step="any" name="quantity" min="1" max="6" ng-model="meal.quantity" ng-pattern="/^1234$/" />
+		
+		<div ng-messages="createForm.rate.$error" multiple md-auto-hide="true">
+			<div ng-message="required">
+				If you don't eat your meat, you can't have any pudding, how can you have any pudding if you don't eat your meat!
+			</div>
+		</div>		
+		</md-input-container>
+		<div class="md-menu-demo" ng-controller="createCtrl as ctrl" ng-cloak>
+			<div class="menu-demo-container" layout-align="start center" layout="column">
+				<div class="menus" layout-wrap layout="row" layout-fill layout-align="space-between center" style="min-height:100px;">
+					
+					<div layout="column" flex="33" flex-sm="100" layout-align="center center">
+						<p>Major Ingredient</p>
+						<md-menu md-offset="0 -7">
+						<md-button ng-click="$mdOpenMenu($event)">
+						<md-icon>whatshot</md-icon>
+						</md-button>
+						<md-menu-content width="2">
+						<md-menu-item ng-repeat="item in [1, 2, 3]">
+						<md-button ng-click="ctrl.announceClick($index)"> <span md-menu-align-target>Option</span> {{item}} </md-button>
+						</md-menu-item>
+						</md-menu-content>
+						</md-menu>
+					</div>
+					<div layout="column" flex="33" flex-sm="100" layout-align="center center">
+						<p>Minor Ingredient</p>
+						<md-menu md-offset="0 -7">
+						<md-button ng-click="$mdOpenMenu($event)">
+						<md-icon>group</md-icon>
+						</md-button>
+						<md-menu-content width="2">
+						<md-menu-item ng-repeat="item in [1, 2, 3]">
+						<md-button ng-click="ctrl.announceClick($index)"> <span md-menu-align-target>Option</span> {{item}} </md-button>
+						</md-menu-item>
+						</md-menu-content>
+						</md-menu>
+					</div>
+					<div layout="column" flex="33" flex-sm="100" layout-align="center center">
+						<p>Misc. Ingredient</p>
+						<md-menu md-offset="0 -7">
+						<md-button ng-click="$mdOpenMenu($event)">
+						<md-icon>check box</md-icon>
+						</md-button>
+						<md-menu-content width="2">
+						<md-menu-item ng-repeat="item in [1, 2, 3]">
+						<md-button ng-click="ctrl.announceClick($index)"> <span md-menu-align-target>Option</span> {{item}} </md-button>
+						</md-menu-item>
+						</md-menu-content>
+						</md-menu>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+		<md-card-actions layout="row" layout-column="end center">
+		<md-button ng-click='addMeal()'>Add Meal</md-button>
+		</md-card-actions>
+	</form>
+	</md-card>
+	</md-content>
+	
+</div>
+</div>
