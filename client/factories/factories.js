@@ -55,7 +55,7 @@ angular.module('factories', [])
   return {
     storeMeal: storeMeal,
     ingredients: ingredients,
-    restrictions: restrictions
+    restrictions: restrictions,
     getAllMeals: getAllMeals,
     searchByIngredient: searchByIngredient
   }
