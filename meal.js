@@ -6,7 +6,9 @@ var mealSchema = mongoose.schema({
   picture: String, 
   description: String,
   title: String,
-  topThreeIngredients: Array
+  topThreeIngredients: Array,
+  creator: String,
+  consumer: String
 });
 
 var Meal = mongoose.model('Meal', mealSchema);
