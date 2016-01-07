@@ -44,7 +44,7 @@ module.exports = {
   }, 
 
   find: function(req, res, next) {
-    findMeal({title: req.body.title})
+    findMeal({creator: req.body.creator})
       .then(function(match) {
         if(match) {
           res.send(match)
