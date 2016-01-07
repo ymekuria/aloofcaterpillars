@@ -16,6 +16,8 @@ angular
       { category: 'veg', name: 'Protein Shake' },
       { category: 'veg', name: 'Grass' }
     ];
+
+
   })
   .config(function($mdThemingProvider) {
 
@@ -23,4 +25,8 @@ angular
       .primaryPalette('yellow')
       .dark();
 
+
+
   });
+
+  
