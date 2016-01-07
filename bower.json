@@ -1,4 +1,4 @@
-{
+  {
   "name": "OneForOne",
   "description": "Trade meals with peers at Hack Reactor",
   "main": "index.js",
