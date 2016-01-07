@@ -6,6 +6,8 @@ var Meal = require('./meal.js');
 var findMeal = Q.nbind(Meal.findOne, Meal);
 // create meal is a method that uses the create mongoose method to instantiate a new Meal model
 var createMeal = Q.nbind(Meal.create, Meal);
+//method for showing all Meal instances
+var findAllMeals = Q.nbind(Meal.find, Meal);
 
 //export methods that utilize the Q methods above. 
 module.exports = {
@@ -16,18 +18,40 @@ module.exports = {
       //if it's found, return an error saying the meal is already in the database
 	  .then(function (meal){
 	    if (meal){
-		  next(new Error('Meal is already in Mongo database'));
-		//otherwise return a new instance of Meal model, setting its properties according to the post request.
-		} else {
+		    next(new Error('Meal is already in Mongo database'));
+		  //otherwise return a new instance of Meal model, setting its properties according to the post request.
+		  } else {
 	      return createMeal({
-		    picture: req.body.picture, 
-  			description: req.body.description,
-  			title: req.body.title,
-  			topThreeIngredients: req.body.topThreeIngredients,
-  			creator: req.body.creator,
-  			consumer: req.body.consumer
-		  });
-		}
+		      picture: req.body.picture, 
+  			  description: req.body.description,
+  			  title: req.body.title,
+  			  topThreeIngredients: req.body.topThreeIngredients,
+  			  creator: req.body.creator,
+  			  consumer: req.body.consumer
+		    });
+		  }
 	  })
+  }, 
+
+  allMeals: function(req, res, next) {
+    findAllMeals({})
+      .then(function(meals) {
+        res.json(meals);
+      })
+      .fail(function(error) {
+        next(error);
+      });
+  }, 
+
+  find: function(req, res, next) {
+    findMeal({creator: req.body.creator})
+      .then(function(match) {
+        if(match) {
+          res.send(match)
+        }
+      })
   }
 }
+
+
+  
