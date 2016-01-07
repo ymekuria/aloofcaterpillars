@@ -9,6 +9,7 @@ var Meal = require('./db/meals/meal');
 var MealController = require('./db/meals/mealController');
 var User = require('./db/users/user');
 var UserController = require('./db/users/userController');
+var q = require('q');
 
 var db = require('./db/dbconfig');// uncomment when this is ready
 
@@ -26,42 +27,25 @@ app.use(express.static(__dirname + '/../client'));// this serves all the static 
 // app.use(express.cookieParser('shhhh, very secret'));// used for Auth uncomment when ready
 // app.use(express.session()); // used for Auth
 
-app.post('/api/create', function (req, resp, next){
 
-
-  var myMeal = new Meal({ title: 'fried chicken' });
-
-  myMeal.save(function (err, meal) {
-    if ( err ) {
-      return next(err);
-    }
-    resp.json(201, meal);
-  });
-
-});
 // Auth
-// app.get('/api/signin', function (res,resp){
+// app.get('/api/signin', function (req,resp){
 
 // });
 
-// app.post('/api/signin', function (res, resp){
+// app.post('/api/signin', function (req, resp){
 
 // });
 
-// // browse
-// app.get('/api/browse', function (res,resp){
+// browse
+// This endpoint returns all the meals. TODO refactor
+app.get('/api/search', MealController.find);
 
-// });
+// this endpoint returns all the meals objects form the db. TODO check with Jonathon to sync endpoint name 
+app.get('/api/browse', MealController.allMeals);
 
-// app.post('/api/browse', function (res, resp){
-
-// });
-
-// // create
-// app.get('/api/create', function (res,resp){
-
-// });
-
+// this endpoint puts a meal to the db
+app.post('/api/create', MealController.create);
 
 
 module.exports = app;

@@ -6,7 +6,7 @@ var mealSchema = mongoose.Schema({
   picture: String, 
   description: String,
   title: String,
-  topThreeIngredients: Array,
+  protein: String,
   creator: String,
   consumer: String
 });
@@ -14,3 +14,4 @@ var mealSchema = mongoose.Schema({
 var Meal = mongoose.model('Meal', mealSchema);
 
 module.exports = Meal; 
+
