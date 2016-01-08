@@ -15,3 +15,8 @@
 
 .carddemoBasicUsage .card-media {
   background-color: #999999; }
+
+.card {	
+	float: left;
+	display: inline-block;
+}

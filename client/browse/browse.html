@@ -59,43 +59,34 @@
       </form>
     </div>
 
+
     <div ng-repeat='meal in data' | filter: user.input>
-			<div class='carddemoBasicUsage'>
-			  <md-content class="md-padding" layout="row" layout-wrap="" layout-align="center start" layout-xs="column" >
-			    <div flex="50" flex-sm="100" flex-xs="100" layout="column">
-			      <md-card>
-			        <md-card-title>
+      <div class='card'>			  
+			    <div flex="100" flex-sm="100" flex-xs="100" layout="row">
+            
+            <div class ="back-text">
+            <fmp-card class="card" id="cardID" suffix="right" small-card-width="250px" image="http://orsimages.unileversolutions.com/ORS_Images/Knorr_en-GB/_0043_Roast-chicken-recipe_16_1.1.93_326X580.Jpeg" small-card-height="200px" ng-cloak>
+
+            <md-card>			   
+              <md-card-title>
 			          <md-card-title-text>
-			            <span class="md-headline">{{ meal.description }}</span>
-			            <span class="md-subhead">{{ meal.creator }}</span>
-                  <span class="md-subhead">{{ meal.protein }}</span>
+			            <span class="md-headline">{{meal.creator}}'s {{ meal.description }}</span>
+                  <span class="md-subheading">Protein: {{ meal.protein }}</span>                  
 			          </md-card-title-text>
-			          <md-card-title-media>
-			            <div class="md-media-lg card-media"></div>
-			          </md-card-title-media>
-			        </md-card-title>
-			        <md-card-actions layout="row" layout-align="end center">
-			          <md-button>Request an exchange</md-button>
-			          <md-button>Add to favorites</md-button>
-			        </md-card-actions>
+
+                <md-card-actions layout="column" layout-align="end center">
+                <md-button>Request an exchange</md-button>
+                <md-button>Add to favorites</md-button>
+              </md-card-actions>
+			        </md-card-title>            			           
 			      </md-card>
+            </div>
 			     
 			    </div>
-			  </md-content>
 			  </div>
+      </fmp-card>
 		  </div> <!-- last div for the ng-repeat DemoCtrl -->
-
-  <fmp-card class="my-card" id="card-2" suffix="right" front-caption="Right Card" small-card-width="20px" small-card-height="20 px">
-        <div class="back-text">{{rightBackText}}</div>
-    </fmp-card>    
-
-
-
-
-
-
 </div><!-- last div for the ng-controller DemoCtrl -->
 
 
-<hr class="hr1">
 
