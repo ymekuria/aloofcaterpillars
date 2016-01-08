@@ -38,7 +38,7 @@ var checkUser = function (req,res,next) {
 
 
 
-app.get('/api/signin', UserController.signin);
+app.post('/api/signin', UserController.signin);
 
 app.get('/api/request', checkUser /*....*/);
 
@@ -46,7 +46,7 @@ app.post('/api/request', checkUser /*....*/);
 
 app.post('/api/view' /*....*/);
 
-app.post('api/view'/*....*/);
+app.get('api/view'/*....*/);
 // browse
 // This endpoint returns all the meals. TODO refactor
 app.get('/api/search', MealController.find);

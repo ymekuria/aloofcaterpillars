@@ -8,10 +8,7 @@ var mongoose = require('mongoose');
 //this variable creates the schema for our users. It includes a name, a password, and a meal object. 
 var userSchema = mongoose.Schema({
   name: String,
-  password: String,
-  //in our rough draw-up of the schema, this should be an array of instantiated meal objects, provided to us by the
-  //particular meal id - need to figure out how to get that id here. 
-  meal: Array 
+  password: String
 });
 
 var User = mongoose.model('User', userSchema);
