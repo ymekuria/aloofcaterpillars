@@ -1,11 +1,17 @@
 angular
-  .module('browse',['ngMaterial', 'ngMessages', 'factories'])
-  .controller('DemoCtrl',   function($scope, Meals) {
+  .module('browse',['ngMaterial', 'ngMessages', 'factories', 'ngAnimate', 'fmp-card'])
+  .controller('browseCtrl',   function($scope, Meals) {
+
+
+    $scope.leftBackText = 'This is the left cards back, you can place whatever you feel like';
+  $scope.rightBackText = 'This is the right cards back, you can place whatever you feel like';
+
 
     $scope.user = {
       input: '',
     };
 
+    $scope.data = {}
 
     $scope.proteins = [
       { category: 'meat', name: 'Chichen' },
@@ -18,15 +24,24 @@ angular
       { category: 'veg', name: 'Grass' }
     ];
 
-    // Meals.getAllMeals().then(function(data){
-    //   console.log('data');
-    // })
+    $scope.restrict = [
+      'All', 'Vegetarian', 'Gluten-Free', 'Paleo', 'Low-Carb'
+    ]
+
+    Meals.getAllMeals().then(function(data){
+      
+      $scope.data = data.data
+      console.log($scope.data);
+    })
 
     $scope.searchIngredient = function(ingredient){
       console.log( ingredient, "selected");
         // searchByIngredient(ingredient).then(function(data){
         //   console.log('data');
         // })
+
+
+
     };
 
   })
