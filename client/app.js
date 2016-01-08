@@ -5,7 +5,9 @@ angular.module('oneApp', [
   'signin',
   'signup',
   'ngRoute',
-  'ngMaterial'
+  'ngMaterial',
+  'fmp-card',
+  'ngAnimate'
   ])
 
 .config(function($routeProvider, $httpProvider) {

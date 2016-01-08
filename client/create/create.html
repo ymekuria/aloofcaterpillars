@@ -48,9 +48,12 @@
 						<md-menu-content width="2">
 						<md-optgroup label="Meats">
 						<md-menu-item ng-repeat="item in ingredients | filter: {ingredient: 'meat'}">
+						
 						<md-button ng-click="addProtein(item)"><span md-menu-align-target></span> {{item.name}} </md-button>
+						
 						</md-optgroup>
 						<md-optgroup label="Vegetables">
+						
 						<md-menu-item ng-repeat="item in ingredients | filter: {ingredient: 'veg'}">
 						
 						<md-button ng-model='meal.protein' ng-click="addProtein(item, meal)"><span md-menu-align-target></span> {{item.name}} </md-button>

@@ -1,32 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>One For One</title>
-	<!-- Scripts for Angular -->
-	<script src="./../lib/angular/angular.js"></script>
-	<script src="./../lib/angular-route/angular-route.js"></script>
-	<script src="./../lib/angular-animate/angular-animate.js"></script>
-	
-	<!-- Scripts for Angular Material Design -->
-	<script src="./../lib/angular-aria/angular-aria.js"></script>
-	<script src="./../lib/angular-messages/angular-messages.js"></script>
-	<script src="./../lib/angular-material/angular-material.js"></script>	
-
-	<script src="./../app.js"></script>
-	<script src="./../browse/browse.js"></script>
-	<script src="./../create/create.js"></script>
-	<script src="./../factories/factories.js"></script>
-
-	<script src="./../auth/signin.js"></script>
-	<script src="./../auth/signup.js"></script>
-
-<link rel="stylesheet" href="./../styles/styles.css">
-<link rel="stylesheet" href="./../lib/angular-material/angular-material.css">
-</head>
-<body>
-
-<div ng-controller="DemoCtrl" layout="column" ng-cloak="" class="md-inline-form inputdemoBasicUsage" ng-app="browse">
+<div ng-controller="browseCtrl" layout="column" ng-cloak="" class="md-inline-form inputdemoBasicUsage" ng-app="browse">
 
 
     <div>
@@ -43,33 +16,59 @@
 					    
 					      <md-input-container>
 					        <label>Search by Protein</label>
-					        <md-select ng-model="ingredient" ng-selected="searchIngredient(ingredient)" >
+					        
+                  <md-select ng-model="ingredient">
+                    <md-menu-content width="2">
 					          <md-optgroup label="Meats">
-					            <md-option ng-value="ingredient.name" ng-repeat="ingredient in proteins | filter: {category: 'meat' }" >{{ingredient.name}}</md-option>
+					            <md-button ng-click="searchIngredient(ingredient)" ng-value="ingredient.name" ng-repeat="ingredient in proteins | filter: {category: 'meat' }" >{{ingredient.name}}
+                      </md-button>
 					          </md-optgroup>
 					          <md-optgroup label="Veggies">
-					            <md-option ng-value="ingredient.name" ng-repeat="ingredient in proteins | filter: {category: 'veg' }" >{{ingredient.name}}</md-option>
+					            <md-button ng-click="searchIngredient(ingredient)" ng-value="ingredient.name" ng-repeat="ingredient in proteins | filter: {category: 'veg' }" >{{ingredient.name}}
+                    </md-button>
 					          </md-optgroup>
-					        </md-select>
+                  </md-menu-content>
+                </md-select>
+
+
 					      </md-input-container>
 					    
-					    <p ng-if="ingredient">Displaying meals containing {{ingredient.toLowerCase()}}.</p>
+					   
 					  </div>
+
+            <div>
+            <md-input-container>
+                  <label>Search by Diet</label>
+                  
+                  <md-select ng-model="ingredient">
+                    <md-menu-content width="2">
+                    <md-optgroup label="Restrictions">
+                      <md-button ng-click="searchIngredient(ingredient)" ng-value="ingredient.name" ng-repeat="diet in restrict" >{{diet}}
+                      </md-button>
+                    </md-optgroup>                   
+                  </md-menu-content>
+                </md-select>
+
+
+                </md-input-container>
+
+              </div>
 					
 
         </div>
       </form>
     </div>
 
-    <!--<div ng-repeat='for meal in $meals' | filter: user.input>-->
+    <div ng-repeat='meal in data' | filter: user.input>
 			<div class='carddemoBasicUsage'>
 			  <md-content class="md-padding" layout="row" layout-wrap="" layout-align="center start" layout-xs="column" >
 			    <div flex="50" flex-sm="100" flex-xs="100" layout="column">
 			      <md-card>
 			        <md-card-title>
 			          <md-card-title-text>
-			            <span class="md-headline">Card with image</span>
-			            <span class="md-subhead">Large</span>
+			            <span class="md-headline">{{ meal.description }}</span>
+			            <span class="md-subhead">{{ meal.creator }}</span>
+                  <span class="md-subhead">{{ meal.protein }}</span>
 			          </md-card-title-text>
 			          <md-card-title-media>
 			            <div class="md-media-lg card-media"></div>
@@ -84,16 +83,19 @@
 			    </div>
 			  </md-content>
 			  </div>
-		  <!--</div> --> <!-- last div for the ng-repeat DemoCtrl -->
+		  </div> <!-- last div for the ng-repeat DemoCtrl -->
+
+  <fmp-card class="my-card" id="card-2" suffix="right" front-caption="Right Card" small-card-width="20px" small-card-height="20 px">
+        <div class="back-text">{{rightBackText}}</div>
+    </fmp-card>    
+
+
+
+
+
 
 </div><!-- last div for the ng-controller DemoCtrl -->
 
 
 <hr class="hr1">
 
-
-
-
-
-
-</body></html>

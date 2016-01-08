@@ -31,7 +31,7 @@ angular.module('factories', ['ngMaterial', 'ngMessages'])
   var getAllMeals = function(meals) {
     return $http({
       method:'GET',
-      url:'api/getAllMeals'
+      url:'api/browse'
     }).success(function(data){
 
       return data;
@@ -59,3 +59,5 @@ angular.module('factories', ['ngMaterial', 'ngMessages'])
     searchByIngredient: searchByIngredient
   }
 })
+    
+
