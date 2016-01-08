@@ -41,10 +41,13 @@ app.get('/api/signin', function (req, res, next){
 
 });
 
-// app.post('/api/signin', function (req, resp){
+app.get('/api/request'/*....*/);
 
-// });
+app.post('/api/request' /*....*/);
 
+app.post('/api/view' /*....*/);
+
+app.post('api/view'/*....*/);
 // browse
 // This endpoint returns all the meals. TODO refactor
 app.get('/api/search', MealController.find);
@@ -55,11 +58,11 @@ app.get('/api/browse', MealController.allMeals);
 // this endpoint puts a meal to the db
 app.post('/api/create', MealController.create);
 
-//TODO: Inquire about logout routing -- if user wants to logout, end their session and send them to signin
-// app.get('/api/logout', function(req, res) {
-//   req.session.destroy(function() {
-//     res.redirect('/');
-//   });
-// }); 
+// TODO: Inquire about logout routing -- if user wants to logout, end their session and send them to signin
+app.get('/api/logout', function(req, res) {
+  req.session.destroy(function() {
+    res.redirect('/');
+  });
+}); 
 
 module.exports = app;
