@@ -8,7 +8,8 @@ var mealSchema = mongoose.Schema({
   title: String,
   protein: String,
   creator: String,
-  consumer: String
+  consumer: String,
+  status: String
 });
 
 var Meal = mongoose.model('Meal', mealSchema);

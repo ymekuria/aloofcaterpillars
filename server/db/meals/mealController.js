@@ -42,7 +42,20 @@ module.exports = {
           res.send(match);
         }
       });
+  },
+
+  makeRequest: function(req, res, next) {
+    //when a request is made, we'll need to change the meal status to pending
+    req.body.status = 'pending';
+    //also need to change the consumer property to the person who made the request
+  },
+
+  viewRequest: function(req, res, next) {
+    //this is where the user can view all of their foods that have a pending status
+
   }
+
+
 };
 
 
