@@ -1,5 +1,10 @@
 angular.module('signin', [])
+.controller('signinCtrl', function($scope) {
 
-.controller('signinCtrl', function() {
-  
-})
+	$scope.signIn = function (user){
+
+      Meals.signin(user).then(function(d) {
+        return d;
+      })
+	}
+});

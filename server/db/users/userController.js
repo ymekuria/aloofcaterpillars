@@ -53,12 +53,12 @@ module.exports = {
         //user not found
         } else {
           //redirect to sign up
-          res.redirect('/signup'); 
+          res.redirect('/register'); 
         }
       });
   }, 
 
-  signup: function(req, res, next) {
+  register: function(req, res, next) {
     //save input username
     var username = req.body.username;
     //save input password

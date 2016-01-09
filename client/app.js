@@ -3,7 +3,7 @@ angular.module('oneApp', [
   'create',
   'factories',
   'signin',
-  'signup',
+  'register',
   'ngRoute',
   'ngMaterial',
   'fmp-card',
@@ -29,12 +29,12 @@ angular.module('oneApp', [
     templateUrl: '/create/create.html',
     controller: 'createCtrl'
   })
-  .when('/signup', {
-    templateUrl: '/auth/signup.html',
-    controller: 'signupCtrl'
+  .when('/register', {
+    templateUrl: '/auth/register.html',
+    controller: 'registerCtrl'
   })
   .when('/view', {
-  templateUrl: '/browse/vewReq.html',
+  templateUrl: '/browse/viewReq.html',
   controller: 'viewCtrl'
   })
 })
