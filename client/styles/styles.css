@@ -20,3 +20,7 @@
 	float: left;
 	display: inline-block;
 }
+
+#left { float:left; }
+#right { float:right; }
+ul { overflow:auto; }

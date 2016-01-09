@@ -30,6 +30,29 @@ angular.module('factories', ['ngMaterial', 'ngMessages'])
       console.log('meal is stored')
     })
   }
+  var signin = function(user) {
+    return $http({
+      method: 'POST',
+      url: '/api/signin',
+      data: user
+    })
+    .then(function(resp) {
+      return resp.data
+      console.log('user is signed in')
+    })
+  }
+
+  var register = function(user) {
+    return $http({
+      method: 'POST',
+      url: '/api/register',
+      data: user
+    })
+    .then(function(resp) {
+      return resp.data
+      console.log('user is stored')
+    })
+  }
 
   var getAllMeals = function(meals) {
     return $http({

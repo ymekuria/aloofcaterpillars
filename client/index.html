@@ -29,7 +29,7 @@
 	<script src="./factories/factories.js"></script>
 
 	<script src="./auth/signin.js"></script>
-	<script src="./auth/signup.js"></script>
+	<script src="./auth/register.js"></script>
 
 		
 </head>
@@ -38,13 +38,19 @@
 
 	<h1>One For One: Meals to Share</h1>
 
-	<div class="navigation">
-	<ul>
+	<div class="navigation" >
+	<ul id='left'>
 	   <li><a href = "#/browse">Browse Meal</a></li>
 	   <li><a href = "#/create">Create Meal</a></li>
 	   <li><a href = "#/view">View Requests</a></li>
 	</ul>
-    </div>
+
+	<ul id='right'>
+	   <li><a href = "#/register">Register an account</a></li>
+	   <li><a href = "#/signin">Signin</a></li>
+	   <li><a href = "#">Logout</a></li>
+</ul>
+    </div><br><br><br><br><br>
 
 
 	<div ng-view></div> 
