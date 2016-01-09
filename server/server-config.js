@@ -49,7 +49,18 @@ app.post('/api/view' /*....*/);
 app.get('api/view'/*....*/);
 // browse
 // This endpoint returns all the meals. TODO refactor
-app.get('/api/search', MealController.find);
+
+//////////////new routes//////////////////////////////////
+app.get('/api/makerequest'/*....*/);
+
+app.get('/api/confirmrequest'/*....*/);
+
+app.get('/api/viewpending'/*....*/);
+
+app.get('/api/viewuser'/*....*/);
+
+
+// //////////////////////////////////////////////////////
 
 // this endpoint returns all the meals objects form the db. TODO check with Jonathon to sync endpoint name 
 app.get('/api/browse', MealController.allMeals);
