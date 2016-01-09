@@ -2,6 +2,8 @@ angular.module('factories', ['ngMaterial', 'ngMessages'])
 
 .factory('Meals', function($http) {
   
+//Right now, all categories of primary ingredient are hard-coded here.
+//TODO: move categories to database
   var ingredients = [
       { ingredient: 'meat', name: 'Chicken' },
       { ingredient: 'meat', name: 'Beef' },
@@ -14,7 +16,7 @@ angular.module('factories', ['ngMaterial', 'ngMessages'])
     ];
 
   var restrictions = [
-    'Vegetarian', 'Paleo',  'Gluten-Free', 'Low-Carb'
+    'None', 'Vegetarian', 'Paleo',  'Gluten-Free', 'Low-Carb'
   ]
 
   var storeMeal = function(meal) {
@@ -25,6 +27,7 @@ angular.module('factories', ['ngMaterial', 'ngMessages'])
     })
     .then(function(resp) {
       return resp.data
+      console.log('meal is stored')
     })
   }
 
@@ -41,21 +44,64 @@ angular.module('factories', ['ngMaterial', 'ngMessages'])
     })
   }
 
+  var makeReq = function(user) {
+    return $http({
+      method: 'PUT',
+      url: 'api/makerequest',
+      data: user
+    }).then(function(resp) {
+      return resp.data
+    })
+  }
+
+  var getUserMeals = function(userMeals) {
+    return $http({
+      method: 'GET',
+      url: 'api/usermeals',
+      data: userMeals
+    }).then(function(resp) {
+      return resp.data
+    })
+  }
+
+  var pendingReq = function(user) {
+    return $http({
+      method: 'GET',
+      url: 'api/viewpending',
+      data: user
+    }).then(function(resp) {
+      return resp.data
+    })
+  }
+
+  var confirmReq = function(meal) {
+    return $http({
+      method: 'PUT',
+      url: 'api/confirmrequest',
+      data: meal
+    }).then(function(resp) {
+      return resp.data
+    })
+  }
+
   var searchByIngredient = function(ingredient){
     return $http({
       method: 'POST',
-      url: 'api/getIngredient',
+      url: 'api/getingredient',
       data: ingredient
     }).then(function(resp){
       return resp.data
     })
   }
 
+
   return {
     storeMeal: storeMeal,
     ingredients: ingredients,
     restrictions: restrictions,
     getAllMeals: getAllMeals,
+    makeReq: makeReq,
+    pendingReq: pendingReq,
     searchByIngredient: searchByIngredient
   }
 })
