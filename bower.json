@@ -24,7 +24,8 @@
     "angular-aria": "~1.4.8",
     "angular-messages": "~1.4.8",
     "angular-material": "~1.0.1",
-    "fmp-card-directive": "angular-flip-card#*"
+    "fmp-card-directive": "angular-flip-card#*",
+    "jquery": "~2.2.0"
   },
   "resolutions": {
     "angular": "1.4.8",
