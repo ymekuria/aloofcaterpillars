@@ -3,10 +3,6 @@ angular
   .controller('browseCtrl',   function($scope, Meals) {
 
 
-    $scope.leftBackText = 'This is the left cards back, you can place whatever you feel like';
-  $scope.rightBackText = 'This is the right cards back, you can place whatever you feel like';
-
-
     $scope.user = {
       input: '',
     };
@@ -14,7 +10,7 @@ angular
     $scope.data = {}
 
     $scope.proteins = [
-      { category: 'meat', name: 'Chichen' },
+      { category: 'meat', name: 'Chicken' },
       { category: 'meat', name: 'Beef' },
       { category: 'meat', name: 'Pork' },
       { category: 'meat', name: 'Bacon' },
@@ -29,18 +25,28 @@ angular
     ]
 
     Meals.getAllMeals().then(function(data){
-      
       $scope.data = data.data
-      console.log($scope.data);
     })
+
+    // Meals.getUserMeals($scope.user).then(function(data) {
+    //   $scope.userMeals = data.data
+    // })
+
+    $scope.makeRequest = function(meal) {      
+      Meals.makeReq(meal).then(function(data) {
+        console.log('makeRequest done')
+      })
+    }
+
+    $scope.offerUserMeals = function() {
+      console.log('offered meals')
+    }
 
     $scope.searchIngredient = function(ingredient){
       console.log( ingredient, "selected");
         // searchByIngredient(ingredient).then(function(data){
         //   console.log('data');
         // })
-
-
 
     };
 

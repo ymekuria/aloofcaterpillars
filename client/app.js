@@ -7,6 +7,7 @@ angular.module('oneApp', [
   'ngRoute',
   'ngMaterial',
   'fmp-card',
+  'viewReq',
   'ngAnimate'
   ])
 
@@ -27,5 +28,9 @@ angular.module('oneApp', [
   .when('/signup', {
     templateUrl: '/auth/signup.html',
     controller: 'signupCtrl'
+  })
+   .when('/view', {
+    templateUrl: '/browse/viewReq.html',
+    controller: 'viewCtrl'
   })
 })
