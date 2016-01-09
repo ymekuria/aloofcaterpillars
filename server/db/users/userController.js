@@ -41,6 +41,8 @@ module.exports = {
           if(dbPassword === password) {
             // create token to send back for auth
             var token = jwt.encode(user, 'secret');
+            //the big question here is exactly how to handle a redirect. know that res.redirect and res.json end
+            //a response, so redirection may have to be handled on client side. 
             res.redirect('/browse');
             res.json({token: token});
           //password does not match
@@ -64,9 +66,12 @@ module.exports = {
     //create a new user with the request username and password
     findUser({username: username})
       .then(function(user) {
+        //if user exists...
         if(user) {
+          //...throw error as username already stored in db. 
           next(new Error('username already exists!'));
         } else {
+          //otherwise create a user with the provided username and password
           return createUser({
             username: username,
             password: password
@@ -75,7 +80,7 @@ module.exports = {
       })
       .then(function(user) {
         var token = jwt.encode(user, 'secret');
-        res.redirect('/browse');
+        //res.redirect('/browse');
         res.json({token: token});
       }); 
 
