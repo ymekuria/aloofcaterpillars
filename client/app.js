@@ -14,6 +14,10 @@ angular.module('oneApp', [
 .config(function($routeProvider, $httpProvider) {
   $routeProvider
   .when('/', {
+    templateUrl: '/browse/browse.html',
+    controller: 'signinCtrl'
+  })
+  .when('/signin', {
     templateUrl: '/auth/signin.html',
     controller: 'signinCtrl'
   })
@@ -29,8 +33,8 @@ angular.module('oneApp', [
     templateUrl: '/auth/signup.html',
     controller: 'signupCtrl'
   })
-   .when('/view', {
-    templateUrl: '/browse/viewReq.html',
-    controller: 'viewCtrl'
+  .when('/view', {
+  templateUrl: '/browse/vewReq.html',
+  controller: 'viewCtrl'
   })
 })
