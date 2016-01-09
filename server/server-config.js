@@ -51,13 +51,13 @@ app.get('api/view'/*....*/);
 // This endpoint returns all the meals. TODO refactor
 
 //////////////new routes//////////////////////////////////
-app.get('/api/makerequest'/*....*/);
+app.put('/api/makerequest', MealController.makeRequest);
 
-app.get('/api/confirmrequest'/*....*/);
+app.put('/api/confirmrequest', MealController.confirmrequest);
 
-app.get('/api/viewpending'/*....*/);
+app.get('/api/viewpending', UserController.viewRequest);
 
-app.get('/api/viewuser'/*....*/);
+app.get('/api/viewuser',MealController.viewRequest);
 
 
 // //////////////////////////////////////////////////////
