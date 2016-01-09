@@ -51,7 +51,7 @@ module.exports = {
   makeRequest: function(req, res, next) {
     //find the prospective meal according to the title of the meal instance provided
     findMeal({title: req.body.meal.title})
-      .then(meal) {
+      .then(function(meal) {
         //update the meal status
         meal.status = 'pending';
         //add the consumer (username from the user instance input) to the meal's consumer array
@@ -66,7 +66,7 @@ module.exports = {
   confirmRequest: function(req, res, next) {
     //Need to find both meal instances instances in the database - start with the first 
     findMeal({title: req.body.meal1.title})
-      .then(meal) {
+      .then(function(meal) {
         //update the status to be sold to confirm
         meal.status = 'sold';
         //clear consumers array
