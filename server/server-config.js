@@ -10,6 +10,7 @@ var MealController = require('./db/meals/mealController');
 var User = require('./db/users/user');
 var UserController = require('./db/users/userController');
 var q = require('q');
+var jwt = require('jwt-simple');
 
 var db = require('./db/dbconfig');// uncomment when this is ready
 
