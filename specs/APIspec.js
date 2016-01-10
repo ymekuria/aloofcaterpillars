@@ -14,8 +14,7 @@ function waitForThen(test, cb) {
 
 describe('Node Server Request Listener Function', function() {
   it('Should answer GET requests for /api/browse with a 200 status code', function() {
-    // This is a fake server request. Normally, the server would provide this,
-    // but we want to test our function's behavior totally independent of the server code
+    // using a fake server to test the api routes independent of the server code
     var req = new stubs.request('/api/browse', 'GET');
     var res = new stubs.response();
 
@@ -50,9 +49,6 @@ describe('Node Server Request Listener Function', function() {
 
     // handler.requestHandler(req, res);
 
-    expect(res._responseCode).to.equal(201);
-
-
-  
+    expect(res._responseCode).to.equal(201); 
 
 });
