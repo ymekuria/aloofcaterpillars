@@ -8,7 +8,6 @@ angular.module('create', [])
 
     $scope.data = {}
 
-
   //Add meal via POST request from Meals factory
     $scope.addMeal = function(meal) {
      
@@ -21,6 +20,7 @@ angular.module('create', [])
       $scope.data.quantity = $scope.userInput.quantity
       
       Meals.storeMeal($scope.data).then(function(d) {
+        alert('Hey a meal was added!')
         return d;
       })
     }

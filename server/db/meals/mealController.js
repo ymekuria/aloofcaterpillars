@@ -26,6 +26,7 @@ module.exports = {
   }, 
 
   allMeals: function(req, res, next) {
+    console.log('You accessed all meals')
     findAllMeals({})
       .then(function(meals) {
         res.json(200, meals);

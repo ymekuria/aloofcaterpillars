@@ -48,7 +48,9 @@ app.get('/api/signin', UserController.signin);
 
 app.get('/api/request', checkUser /*....*/);
 
-app.post('/api/register', UserController.create) 
+app.post('/api/register', UserController.create)
+
+app.get('/api/browse', MealController.allMeals) 
 
 // app.post('/api/request', checkUser /*....*/);
 
