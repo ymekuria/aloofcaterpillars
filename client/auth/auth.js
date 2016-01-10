@@ -18,8 +18,10 @@ angular.module('auth', [])
     console.log("sign in info", $scope.user)
     Auth.signin($scope.user)
       .then(function (token) {
-        $window.localStorage.setItem('com.oneApp', token);
-        $location.path('/view');
+        console.log(token)
+        $window.localStorage.setItem('com.oneApp', token.token)
+        $window.localStorage.setItem('com.oneAppUser', token.username);
+        $location.path('/browse');
       })
       .catch(function (error) {
         console.error(error);

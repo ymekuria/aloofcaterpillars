@@ -33,12 +33,15 @@ angular
     //   $scope.userMeals = data.data
     // })
 
-    $scope.makeRequest = function(meal) {      
-      console.log(meal)
-      console.log($window.localStorage.getItem('com.oneApp'))
-      // Meals.makeReq(meal).then(function(data) {
-      //   console.log('makeRequest done')
-      // })
+    $scope.makeRequest = function(meal) {            
+      var req = {
+        username: $window.localStorage.getItem('com.oneAppUser'),
+        meal: meal
+      }
+
+      Meals.makeReq(req).then(function(data) {
+        alert('Made the request')
+      })
     }
 
     $scope.offerUserMeals = function() {

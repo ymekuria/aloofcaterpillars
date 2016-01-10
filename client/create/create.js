@@ -1,6 +1,6 @@
 angular.module('create', [])
 
-.controller('createCtrl', ['$scope', 'Meals', function($scope, Meals) {
+.controller('createCtrl', ['$scope', 'Meals', '$window', function($scope, Meals, $window) {
 
   //Pull ingredients and restrictions from Meals factory
     $scope.ingredients = Meals.ingredients
@@ -18,6 +18,7 @@ angular.module('create', [])
       $scope.data.creator = $scope.userInput.creator
       $scope.data.description = $scope.userInput.description
       $scope.data.quantity = $scope.userInput.quantity
+      console.log($window.localStorage.getItem('com.oneAppUser'))
       
       Meals.storeMeal($scope.data).then(function(d) {
         alert('Hey a meal was added!')

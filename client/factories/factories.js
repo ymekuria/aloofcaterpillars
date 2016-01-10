@@ -42,11 +42,11 @@ angular.module('factories', ['ngMaterial', 'ngMessages'])
     })
   }
 
-  var makeReq = function(user) {
+  var makeReq = function(req) {
     return $http({
       method: 'PUT',
       url: 'api/makerequest',
-      data: user
+      data: req
     }).then(function(resp) {
       return resp.data
     })
@@ -118,7 +118,7 @@ angular.module('factories', ['ngMaterial', 'ngMessages'])
         })
         .then(function(resp) {
           console.log(resp)
-          return resp.data.token;
+          return resp.data;
         });
     };
 
@@ -129,7 +129,7 @@ angular.module('factories', ['ngMaterial', 'ngMessages'])
           data: user
         })
         .then(function(resp) {
-          return resp.data.token;
+          return resp.data.token
         });
     };
 
