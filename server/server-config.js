@@ -5,10 +5,13 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
+
 var Meal = require('./db/meals/meal');
 var MealController = require('./db/meals/mealController');
+
 var User = require('./db/users/user');
 var UserController = require('./db/users/userController');
+
 var q = require('q');
 var jwt = require('jwt-simple');
 
@@ -38,35 +41,39 @@ var checkUser = function (req,res,next) {
 };
 
 
-
 app.post('/api/signin', UserController.signin);
+
+app.get('/api/signin', UserController.signin);
+
 
 app.get('/api/request', checkUser /*....*/);
 
-app.post('/api/request', checkUser /*....*/);
+app.post('/api/register', UserController.create) 
 
-app.post('/api/view' /*....*/);
+// app.post('/api/request', checkUser /*....*/);
 
-app.get('api/view'/*....*/);
-// browse
-// This endpoint returns all the meals. TODO refactor
+// app.post('/api/view' /*....*/);
 
-//////////////new routes//////////////////////////////////
-app.put('/api/makerequest', MealController.makeRequest);
+// app.get('api/view'/*....*/);
+// // browse
+// // This endpoint returns all the meals. TODO refactor
 
-app.put('/api/confirmrequest', MealController.confirmrequest);
+// //////////////new routes//////////////////////////////////
+// // app.put('/api/makerequest', MealController.makeRequest);
 
-app.get('/api/viewpending', UserController.viewRequest);
+// // app.put('/api/confirmrequest', MealController.confirmrequest);
 
-app.get('/api/viewuser',MealController.viewRequest);
+// app.get('/api/viewpending', UserController.viewRequest);
+
+// app.get('/api/viewuser',MealController.viewRequest);
 
 
-// //////////////////////////////////////////////////////
+// // //////////////////////////////////////////////////////
 
-// this endpoint returns all the meals objects form the db. TODO check with Jonathon to sync endpoint name 
-app.get('/api/browse', MealController.allMeals);
+// // this endpoint returns all the meals objects form the db. TODO check with Jonathon to sync endpoint name 
+// app.get('/api/browse', MealController.allMeals);
 
-// this endpoint puts a meal to the db
+// // this endpoint puts a meal to the db
 app.post('/api/create', checkUser, MealController.create);
 
 // TODO: Inquire about logout routing -- if user wants to logout, end their session and send them to signin

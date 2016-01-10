@@ -51,11 +51,12 @@ module.exports = {
   makeRequest: function(req, res, next) {
     //find the prospective meal according to the title of the meal instance provided
     findMeal({title: req.body.meal.title})
-      .then(function(meal) {
+      .then(function(meal) {        
         //update the meal status
         meal.status = 'pending';
         //add the consumer (username from the user instance input) to the meal's consumer array
-        meal.consumers.push(req.body.user.username); 
+        meal.consumers.push(req.body.user.username);
+        res.send(201) 
       })
       .fail(function(error) {
         next(error);
@@ -76,7 +77,7 @@ module.exports = {
         next(error);
       });
     findMeal({title: req.body.meal2.title})
-      .then(meal) {
+      .then(function(meal) {
         //update the status to be sold to confirm
         meal.status = 'sold';
         //clear consumers array
