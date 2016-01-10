@@ -36,9 +36,14 @@ describe('Node Server Request Listener Function', function() {
   });
 
   it('Should post a new meal at endpoint api/create', function() {
-    var stubMsg = {
-      username: 'Jono',
-      message: 'Do my bidding!'
+    var stubMeal = {
+        picture: 'testpic', 
+        description: 'Great steak with a salad',
+        title: 'Steak',
+        protein: 'before',
+        creator: 'Yoni',
+        consumers: [],
+        status: false
     };
     var req = new stubs.request('/api/create', 'POST', stubMsg);
     var res = new stubs.response();
