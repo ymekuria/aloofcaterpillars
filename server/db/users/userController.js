@@ -36,13 +36,10 @@ module.exports = {
      findUser({username: username})
       //when done, if found...
       .then(function(user) {
-        console.log('the found user is:', user)
         if(user) {
           //...user exists. Check their password.
           //save database password
           var dbPassword = user.get('password');
-          console.log("this is the password", dbPassword)
-          console.log("user.password is" , user.password)
           //if input password equals db password
           if(dbPassword === password) {
             console.log('Congrats. You got in')

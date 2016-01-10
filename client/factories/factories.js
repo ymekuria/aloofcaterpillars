@@ -117,6 +117,7 @@ angular.module('factories', ['ngMaterial', 'ngMessages'])
           data: user
         })
         .then(function(resp) {
+          console.log(resp)
           return resp.data.token;
         });
     };
