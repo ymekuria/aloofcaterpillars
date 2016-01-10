@@ -50,7 +50,7 @@ module.exports = {
             var token = jwt.encode(user, 'secret');
             //the big question here is exactly how to handle a redirect. know that res.redirect and res.json end
             //a response, so redirection may have to be handled on client side. 
-            res.json({token: token});
+            res.json({token: token, username: username});
           //password does not match
           } else {
             console.log('Less congrats. You are redirected')

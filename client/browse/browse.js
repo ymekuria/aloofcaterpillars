@@ -1,6 +1,6 @@
 angular
   .module('browse',['ngMaterial', 'ngMessages', 'factories', 'ngAnimate', 'fmp-card'])
-  .controller('browseCtrl',   function($scope, Meals) {
+  .controller('browseCtrl',   function($scope, $window, Meals) {
 
 
     $scope.user = {
@@ -25,6 +25,7 @@ angular
     ]
 
     Meals.getAllMeals().then(function(data){
+      console.log('Trying to get all meals')
       $scope.data = data.data
     })
 
@@ -33,9 +34,11 @@ angular
     // })
 
     $scope.makeRequest = function(meal) {      
-      Meals.makeReq(meal).then(function(data) {
-        console.log('makeRequest done')
-      })
+      console.log(meal)
+      console.log($window.localStorage.getItem('com.oneApp'))
+      // Meals.makeReq(meal).then(function(data) {
+      //   console.log('makeRequest done')
+      // })
     }
 
     $scope.offerUserMeals = function() {

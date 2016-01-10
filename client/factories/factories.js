@@ -31,14 +31,12 @@ angular.module('factories', ['ngMaterial', 'ngMessages'])
     })
   }
 
-  var getAllMeals = function(meals) {
+  var getAllMeals = function() {
     return $http({
       method:'GET',
-      url:'api/browse'
+      url:'/api/browse'
     }).success(function(data){
-
       return data;
-
     }).error(function(){
       alert('error');
     })

@@ -8,7 +8,7 @@ angular.module('auth', [])
     Auth.signup($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.oneApp', token);
-        $location.path('/view');
+        $location.path('/browse');
       })
       .catch(function (error) {
         console.error(error);

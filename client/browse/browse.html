@@ -1,104 +1,79 @@
 <!DOCTYPE html>
 <div ng-controller="browseCtrl" layout="column" ng-cloak class="md-inline-form inputdemoBasicUsage" ng-app="browse">
-
-
-    <div>
-      <form name="userForm">
-
-        <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm="">
-            <label>Search all meals </label>
-            <input type="text" ng-model="user.input">
+  <div>
+    <form name="userForm">
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm="">
+        <label>Search all meals </label>
+        <input type="text" ng-model="user.input">
+        </md-input-container>
+        <div>
+          
+          
+          <md-input-container>
+          <label>Search by Protein</label>
+          
+          <md-select ng-model="ingredient">
+          <md-menu-content width="2">
+          <md-optgroup label="Meats">
+          <md-button ng-click="searchIngredient(ingredient)" ng-value="ingredient.name" ng-repeat="ingredient in proteins | filter: {category: 'meat' }" >{{ingredient.name}}
+          </md-button>
+          </md-optgroup>
+          <md-optgroup label="Veggies">
+          <md-button ng-click="searchIngredient(ingredient)" ng-value="ingredient.name" ng-repeat="ingredient in proteins | filter: {category: 'veg' }" >{{ingredient.name}}
+          </md-button>
+          </md-optgroup>
+          </md-menu-content>
+          </md-select>
           </md-input-container>
-
-					  <div>
-					    
-					    
-					      <md-input-container>
-					        <label>Search by Protein</label>
-					        
-                  <md-select ng-model="ingredient">
-                    <md-menu-content width="2">
-					          <md-optgroup label="Meats">
-					            <md-button ng-click="searchIngredient(ingredient)" ng-value="ingredient.name" ng-repeat="ingredient in proteins | filter: {category: 'meat' }" >{{ingredient.name}}
-                      </md-button>
-					          </md-optgroup>
-					          <md-optgroup label="Veggies">
-					            <md-button ng-click="searchIngredient(ingredient)" ng-value="ingredient.name" ng-repeat="ingredient in proteins | filter: {category: 'veg' }" >{{ingredient.name}}
-                    </md-button>
-					          </md-optgroup>
-                  </md-menu-content>
-                </md-select>
-
-
-					      </md-input-container>
-					    
-					   
-					  </div>
-
-            <div>
-            <md-input-container>
-                  <label>Search by Diet</label>
-                  
-                  <md-select ng-model="ingredient">
-                    <md-menu-content width="2">
-                    <md-optgroup label="Restrictions">
-                      <md-button ng-click="searchIngredient(ingredient)" ng-value="ingredient.name" ng-repeat="diet in restrict" >{{diet}}
-                      </md-button>
-                    </md-optgroup>                   
-                  </md-menu-content>
-                </md-select>
-
-
-                </md-input-container>
-
-              </div>
-					
-
+          
+          
         </div>
-      </form>
+        <div>
+          <md-input-container>
+          <label>Search by Diet</label>
+          
+          <md-select ng-model="ingredient">
+          <md-menu-content width="2">
+          <md-optgroup label="Restrictions">
+          <md-button ng-click="searchIngredient(ingredient)" ng-value="ingredient.name" ng-repeat="diet in restrict" >{{diet}}
+          </md-button>
+          </md-optgroup>
+          </md-menu-content>
+          </md-select>
+          </md-input-container>
+        </div>
+        
+      </div>
+    </form>
+  </div>
+  <div ng-repeat='meal in data' | filter: user.input>
+    <div class='card'>
+      <div flex="100" flex-sm="100" flex-xs="100" layout="row">
+        
+        <div class ="back-text">
+          <md-card>
+          <md-card-title>
+          <md-card-title-text>
+          <span class="md-headline">{{meal.creator}}'s {{ meal.description }}</span>
+          </md-card-title-text>
+          <md-card-actions layout="column" layout-align="end center">
+          
+          <fmp-card class="card" id="cardID" suffix="right" small-card-width="200px" small-card-height="50px" front-caption="Request" ng-cloak>
+          <p> {{meal.description}} </p>
+          <md-button ng-click="makeRequest(meal)">Request</md-button>
+          
+          </fmp-card>
+          <fmp-card class="card" id="cardID" suffix="right" small-card-width="200px" small-card-height="50px" front-caption="Favorites" ng-cloak>
+          <md-button>Add to favorites</md-button>
+          </fmp-card>
+          </md-card-actions>
+          </md-card-title>
+          </md-card>
+        </div>
+        
+      </div>
     </div>
-
-
-    <div ng-repeat='meal in data' | filter: user.input>
-      <div class='card'>			  
-			    <div flex="100" flex-sm="100" flex-xs="100" layout="row">
-            
-            <div class ="back-text">
-
-            <md-card>			   
-              <md-card-title>
-			          <md-card-title-text>
-			            <span class="md-headline">{{meal.creator}}'s {{ meal.description }}</span>
-			          </md-card-title-text>
-
-                <md-card-actions layout="column" layout-align="end center">
-                
-
-                <fmp-card class="card" id="cardID" suffix="right" small-card-width="200px" small-card-height="50px" front-caption="Request" ng-cloak>
-
-                <p> {{meal.description}} </p>
-
-                <md-button ng-click="makeRequest(meal)">Request</md-button>
-                
-                </fmp-card> 
-
-                <fmp-card class="card" id="cardID" suffix="right" small-card-width="200px" small-card-height="50px" front-caption="Favorites" ng-cloak>
-                <md-button>Add to favorites</md-button>
-                </fmp-card> 
-              </md-card-actions>
-			        </md-card-title>            			           
-			      </md-card>
-            </div>
-			     
-			    </div>
-			  </div>
-
-		  </div> <!-- last div for the ng-repeat DemoCtrl -->
-</div><!-- last div for the ng-controller DemoCtrl -->
-
-
-
-      </fmp-card>
-
-
+    </div> <!-- last div for the ng-repeat DemoCtrl -->
+    </div><!-- last div for the ng-controller DemoCtrl -->
+    </fmp-card>
