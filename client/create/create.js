@@ -19,7 +19,6 @@ angular.module('create', [])
       $scope.data.creator = $scope.userInput.creator
       $scope.data.description = $scope.userInput.description
       $scope.data.quantity = $scope.userInput.quantity
-      console.log($scope.data)
       
       Meals.storeMeal($scope.data).then(function(d) {
         return d;

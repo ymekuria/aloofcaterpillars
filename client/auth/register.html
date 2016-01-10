@@ -1,9 +1,9 @@
-<div class="col-md-6 col-md-offset-3" ng-model='register' ng-controller='registerCtrl'>
+<div class="col-md-6 col-md-offset-3" ng-model='register' ng-controller='AuthController'>
     <h2>Register an account</h2>
  <form novalidate class="simple-form">
-    Username: <input type="text" ng-model="user.name" /><br />
+    Username: <input type="text" ng-model="user.username" /><br />
     Password: <input type="text" ng-model="user.password" /><br />
-    <input type="submit" ng-click="createUser(user)" value="Register" />
+    <input type="submit" ng-click="signup()" value="Register" />
   </form>
   <a href="#/signin" class="btn btn-link">already have an account ? </a>
 </div>

@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 
 //this variable creates the schema for our users. It includes a name, a password, and a meal object. 
 var userSchema = mongoose.Schema({
-  name: String,
+  username: String,
   password: String
 });
 
