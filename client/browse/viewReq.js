@@ -44,6 +44,14 @@ angular.module('viewReq', [])
 
   function confirmTrade(meal) {
     console.log($scope.tradeMeal, meal)
+    var sendReq = {
+        meal1: $scope.tradeMeal,
+        meal2: meal
+    }
+    Meals.confirmReq(sendReq).then(function() {
+      console.log('request cofirmed. Send me to a confirm page')
+    })
+
   }
   
 

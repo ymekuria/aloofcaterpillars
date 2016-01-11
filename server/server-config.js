@@ -19,8 +19,6 @@ var db = require('./db/dbconfig');// uncomment when this is ready
 
 // TODO- add these modules later
 // utils = require('./utils');
-routes = require('../server-routes/routes');
-
 var app = express();
 
 // Middleware. Add below as needed
@@ -59,6 +57,8 @@ app.put('/api/makerequest', checkUser, MealController.makeRequest)
 
 app.get('/api/viewpending', MealController.viewPending)
 
+app.put('/api/confirmrequest', MealController.confirmRequest);
+
 // app.post('/api/request', checkUser /*....*/);
 
 // app.post('/api/view' /*....*/);
@@ -71,7 +71,7 @@ app.get('/api/viewpending', MealController.viewPending)
 // // app.put('/api/makerequest', MealController.makeRequest);
 
 
-// // app.put('/api/confirmrequest', MealController.confirmrequest);
+
 
 // app.get('/api/viewpending', UserController.viewRequest);
 

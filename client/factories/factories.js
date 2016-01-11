@@ -97,6 +97,7 @@ angular.module('factories', ['ngMaterial', 'ngMessages'])
     restrictions: restrictions,
     getAllMeals: getAllMeals,
     getUserMeals: getUserMeals,
+    confirmReq: confirmReq,
     makeReq: makeReq,
     pendingReq: pendingReq,
     searchByIngredient: searchByIngredient,
