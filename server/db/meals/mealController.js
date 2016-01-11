@@ -53,14 +53,14 @@ module.exports = {
   //given an object containing a user (the prospective consumer) and the meal being requested) 
   makeRequest: function(req, res, next) {
     //find the prospective meal according to the title of the meal instance provided
-    findMeal({title: req.body.meal.title})
+    findMeal({description: req.body.meal.description})
       .then(function(meal) {   
         // console.log(req.body.meal);  
         console.log(meal);   
         //update the meal status
         meal.status = 'pending';
         //add the consumer (username from the user instance input) to the meal's consumer array
-        meal.consumers.push(req.body.user.username);
+        meal.consumers.push(req.body.username);
         //after updating the meal, it also needs to be saved/updated in the database
         meal.save(function(err){
             if (!err){

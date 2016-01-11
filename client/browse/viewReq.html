@@ -1,7 +1,7 @@
 <div layout='column'>
 <div ng-controller="viewCtrl as vm" layout="row" ng-cloak>
 	<div ng-if="!showHTML" ng-repeat='meal in pending'>
-		<h2>Pending Request</h2>
+		<h2>{{meal.consumers[0]}}'s Request</h2>
 		<div class='figure'>
 			<div id="effect-1">
 				<div class="two-col col-row clearfix">
@@ -22,9 +22,8 @@
 		</div>
 	</div>
 
-<div layout="row" ng-cloak>
-	<div ng-if="showHTML" ng-repeat="meal in activeMeals">		
-	<h2>Available to Trade</h2>
+<div ng-if="showHTML" layout="row">		
+<div layout="row" ng-repeat="meal in activeMeals" ng-cloak>
 		<div class='figure'>
 			<div id="effect-1">
 				<div class="two-col col-row clearfix">
@@ -38,10 +37,10 @@
 							<button ng-click="vm.confirmTrade(meal)">Confirm
 								</button>
 							</span>
-
 							</figcaption>
 						</figure>
 					</div>
+					<h2>Available to Trade</h2>
 				</div>
 			</div>
 			

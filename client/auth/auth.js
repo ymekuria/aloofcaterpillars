@@ -3,6 +3,11 @@ angular.module('auth', [])
 .controller('AuthController', function ($scope, $window, $location, Auth) {
   $scope.user = {};
 
+  //if you're coming from logout, destroy token
+
+  $window.localStorage.setItem('com.oneApp', {})
+  $window.localStorage.setItem('com.oneAppUser', "")
+
   $scope.signup = function () {
     Auth.signup($scope.user)
       .then(function (token) {
@@ -27,20 +32,4 @@ angular.module('auth', [])
         console.error(error);
       });
   };
-
-  // $scope.signin = function (user){
-  //     Meals.signin(user).then(function(d) {
-  //       console.log(d)
-  //       return d;
-  //     })
-  // }
-
-  //   $scope.createUser = function(user) {
-  //     console.log(user)
-  //     Meals.register(user).then(function(d) {
-  //       console.log("user is ", d)
-  //       return d;
-  //     })
-  // }
-
 });
