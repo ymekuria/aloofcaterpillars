@@ -120,7 +120,7 @@ module.exports = {
                 console.log(err);
             }
         });
-        res.send(201, {meal1: mealOne, meal2: mealTwo});
+        res.send(201, JSON.stringify({meal1: mealOne, meal2: mealTwo}));
       })
       .fail(function(error) {
         next(error);
@@ -169,6 +169,7 @@ module.exports = {
       })
   } 
 };
+
 
 
   
