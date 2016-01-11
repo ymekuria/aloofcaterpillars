@@ -6,7 +6,7 @@ var Users = require('../server/db/users/user.js');
 
 // Adds support for assertions on array elements
 // https://github.com/chaijs/Chai-Things#examples
-//chai.use(require('chai-things'));
+chai.use(require('chai-things'));
 
 var testUsers = [
   {
@@ -223,7 +223,7 @@ describe('RESTful API', function () {
         // ask Anthony and Jonathon what they can send back for us to make this work
         request(app)
           .put('/api/confirmrequest')
-          .send(mealToUpdate);
+          .send(mealToUpdate)
           .expect(200, done);
 
       });
