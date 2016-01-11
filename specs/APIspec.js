@@ -1,11 +1,10 @@
 var chai = require('chai');
 var expect = require('../node_modules/chai/chai').expect;
-//var request = require('supertest');//npm --save
+var request = require('supertest');//npm --save
 var app = require('../server/server-config.js');
 var Users = require('../server/db/users/user.js');
 
-// Adds support for assertions on array elements
-// https://github.com/chaijs/Chai-Things#examples
+
 chai.use(require('chai-things'));
 
 var testUsers = [
