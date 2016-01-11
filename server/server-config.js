@@ -17,8 +17,6 @@ var jwt = require('jwt-simple');
 
 var db = require('./db/dbconfig');// uncomment when this is ready
 
-// TODO- add these modules later
-// utils = require('./utils');
 var app = express();
 
 // Middleware. Add below as needed
@@ -38,57 +36,30 @@ var checkUser = function (req,res,next) {
   }
 };
 
-
+// Look into having both get and post
 app.get('/api/signin', UserController.signin);
 app.post('/api/signin', UserController.signin);
 
+app.post('/api/register', UserController.register);
 
+// this endpoint returns all the meals objects form the db. TODO check with Jonathon to sync endpoint name 
+app.get('/api/browse', MealController.allMeals);
 
-app.get('/api/request', checkUser /*....*/);
-app.post('/api/register', UserController.create)
-
-
-app.post('/api/create', checkUser, MealController.create);
-app.get('/api/browse', MealController.allMeals) 
-
+// this endpoint returns all the meal instances.
 app.get('/api/usermeals', checkUser, MealController.allMeals);
 
+// this endpoint recieves an object containing a user (the prospective consumer) and the meal being requested and updates the status or the meal to pending  
 app.put('/api/makerequest', checkUser, MealController.makeRequest)
 
-app.get('/api/viewpending', MealController.viewPending)
-
-app.put('/api/confirmrequest', MealController.confirmRequest);
-
-// app.post('/api/request', checkUser /*....*/);
-
-// app.post('/api/view' /*....*/);
-
-// app.get('api/view'/*....*/);
-// // browse
-// // This endpoint returns all the meals. TODO refactor
-
-// //////////////new routes//////////////////////////////////
-// // app.put('/api/makerequest', MealController.makeRequest);
+// this endpoint returns all the pending meals from a user 
+app.get('/api/viewpending', MealController.viewPending);
 
 
+// this endpoint returns all the consumers of a meal instance
+app.get('/api/viewuser', MealController.viewUsers);
 
+// this endpoint takes TWO meal instances and updates the status to sold to confirm transaction
+app.put('/api/confirmrequest', MealController.confirmRequest)
 
-// app.get('/api/viewpending', UserController.viewRequest);
-
-// app.get('/api/viewuser',MealController.viewRequest);
-// // //////////////////////////////////////////////////////
-
-// // this endpoint returns all the meals objects form the db. TODO check with Jonathon to sync endpoint name 
-// app.get('/api/browse', MealController.allMeals);
-
-
-// // this endpoint puts a meal to the db
-
-// TODO: Inquire about logout routing -- if user wants to logout, end their session and send them to signin
-app.get('/api/logout', function(req, res) {
-  req.session.destroy(function() {
-    res.redirect('/');
-  });
-}); 
 
 module.exports = app;
