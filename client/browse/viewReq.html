@@ -1,46 +1,54 @@
-<h2>Pending Requests</h2>
-<div ng-controller="viewCtrl" layout="row" ng-cloak>
-	<div ng-repeat='meal in pending'>
+<div layout='column'>
+<div ng-controller="viewCtrl as vm" layout="row" ng-cloak>
+	<div ng-if="!showHTML" ng-repeat='meal in pending'>
+		<h2>Pending Request</h2>
 		<div class='figure'>
 			<div id="effect-1">
 				<div class="two-col col-row clearfix">
-                <div class="col col-1-2">
-                    <figure>
-                        <img src="http://www.bonappetit.com/wp-content/uploads/2012/06/tacos-646.jpg" alt="">
-                        <figcaption>
-                            <h3>{{meal.description}}</h3>
-                            <span><button ng-click="showUser(meal)" ng-init="count=0">Available Meals</span></button>
-                        </figcaption>
-                    </figure>
-                </div>
-            </div>			
+					<div class="col col-1-2">
+						<figure>
+							<img src="http://www.bonappetit.com/wp-content/uploads/2012/06/tacos-646.jpg" alt="">
+							<figcaption>
+							<h3>{{meal.description}}</h3>
+							<span><button ng-click="vm.handleButtonClick(meal)">{{meal.consumers[0]}}'s Meals
+								</button>
+							</span>
+							</figcaption>
+						</figure>
+					</div>
+				</div>
+			</div>
 			
+		</div>
+	</div>
+
+<div layout="row" ng-cloak>
+	<div ng-if="showHTML" ng-repeat="meal in activeMeals">		
+	<h2>Available to Trade</h2>
+		<div class='figure'>
+			<div id="effect-1">
+				<div class="two-col col-row clearfix">
+					<div class="col col-1-2">
+						<figure>
+							<img src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Chatterbox_ChickenRice.JPG" alt="">
+							<figcaption>
+							<h3>{{meal.description}}</h3>
+							<span><button ng-click="vm.handleButtonClick(meal)">Go Back
+								</button>
+							<button ng-click="vm.confirmTrade(meal)">Confirm
+								</button>
+							</span>
+
+							</figcaption>
+						</figure>
+					</div>
+				</div>
 			</div>
 			
 		</div>
 	</div>
 </div>
 
-
-<h2>Available to Trade</h2>
-<div ng-controller="viewCtrl" layout="row" ng-cloak>
-	<div ng-repeat='meal in allData | filter:meal.creator===active'>
-		<div class='figure'>
-			<div id="effect-1">
-				<div class="two-col col-row clearfix">
-                <div class="col col-1-2">
-                    <figure>
-                        <img src="http://www.bonappetit.com/wp-content/uploads/2012/06/tacos-646.jpg" alt="">
-                        <figcaption>
-                            <h3>{{meal.description}}</h3>
-                            <span><button ng-click="showUser(meal)" ng-init="count=0">Available Meals</span></button>
-                        </figcaption>
-                    </figure>
-                </div>
-            </div>			
-			
-			</div>
-			
-		</div>
-	</div>
 </div>
+</div>
+
