@@ -11,18 +11,18 @@ var Users = require('../server/db/users/user.js');
 var testUsers = [
   {
   
-    name: 'Taka',
-    email: 'taka@taka.com'
+    name: 'phil',
+    password: 'ptest'
   },
   {
     id: 2,
-    name: 'Nayo',
-    email: 'nayo@nayo.com'
+    name: 'john',
+    password: 'jtest'
   },
   {
     id: 3,
-    name: 'Amrit',
-    email: 'amrit@amrit.com'
+    name: 'chris',
+    password: 'ctest'
   }
 ];
 
@@ -37,12 +37,12 @@ var getBody = function (res) {
 
 describe('RESTful API', function () {
 
-  beforeEach(function () {
-    // Send a deep copy in so internal mutations do not affect our `testUsers` array above
-    // Note: This copy technique works because we don't have any functions
-    var usersCopy = JSON.parse(JSON.stringify(testUsers));
-    Users.setAll(usersCopy);
-  });
+  // beforeEach(function () {
+  //   // Send a deep copy in so internal mutations do not affect our `testUsers` array above
+  //   // Note: This copy technique works because we don't have any functions
+  //   var usersCopy = JSON.parse(JSON.stringify(testUsers));
+  //   Users.setAll(usersCopy);
+  // });
 
   describe('/api/signin', function () {
 
@@ -63,8 +63,8 @@ describe('RESTful API', function () {
     describe('POST', function () {
 
       var newUser = {
-        name: 'Joey',
-        email: 'joey@joey.co'
+        name: 'phil',
+        password: 'ptest'
       };
 
       it('responds with a 201 (Created) when a valid user is sent', function (done) {
@@ -106,16 +106,20 @@ describe('RESTful API', function () {
 
     describe('POST', function () {
 
-      var newUser = {
-        name: 'anthony',
-        email: 'anthony@anthony.co'
-      };
+      var newMeal = { picture: 'test', 
+            description: 'Chicken',
+            title: 'Chicken with veggies',
+            protein: 'Chicken',
+            creator: 'Jonathan',
+            consumers: [],
+            status: 'false' 
+          }
 
       it('responds with a 201 (Created) when a new meal is posted to the system', function (done) {
 
         request(app)
           .post('/api/create')
-          .send(newUser)
+          .send(newMeal)
           .expect(201, done);
 
       });
@@ -133,7 +137,7 @@ describe('RESTful API', function () {
       it('responds with a 200 (OK)', function (done) {
 
         request(app)
-          .get('/api/users')
+          .get('/api/browse')
           .expect(200, done);
 
       });
@@ -141,8 +145,6 @@ describe('RESTful API', function () {
     });    
   
   });
-
-
 
 
   describe('/api/viewpending', function () {
@@ -181,17 +183,20 @@ describe('RESTful API', function () {
 
     describe('PUT', function () {
 
-      it('responds with a 200 (OK) the meal status is changed to sold', function (done) {
-
-        request(app)
-          .put('/api/confirmrequest')
-          .send({ picture: 'test', 
+      var mealToUpdate = { picture: 'test', 
             description: 'Eggs',
             title: 'Egg and sausage bake',
             protein: 'eggs',
             creator: 'Yoni',
             consumers: [],
-            status: 'pending' })
+            status: 'pending' 
+          };
+
+      it('responds with a 200 (OK) the meal status is changed to sold', function (done) {
+
+        request(app)
+          .put('/api/confirmrequest')
+          .send(mealToUpdate)
           .expect(200, done);
 
       });
@@ -203,6 +208,14 @@ describe('RESTful API', function () {
 
    describe('/api/makerequest', function () {
 
+    var mealToUpdate = { picture: 'test', 
+            description: 'Eggs',
+            title: 'Egg and sausage bake',
+            protein: 'eggs',
+            creator: 'Yoni',
+            consumers: [],
+            status: 'pending' };
+
     describe('PUT', function () {
 
       it('responds with a 200 (OK) the meal status is changed to pending', function (done) {
@@ -210,13 +223,7 @@ describe('RESTful API', function () {
         // ask Anthony and Jonathon what they can send back for us to make this work
         request(app)
           .put('/api/confirmrequest')
-          .send({ picture: 'test', 
-            description: 'Eggs',
-            title: 'Egg and sausage bake',
-            protein: 'eggs',
-            creator: 'Yoni',
-            consumers: [],
-            status: 'pending' })
+          .send(mealToUpdate);
           .expect(200, done);
 
       });
@@ -224,19 +231,6 @@ describe('RESTful API', function () {
     });  
   
   }); 
-
-
-
-
-
-
-
-
-
-
-
-
-
 });
 
 
