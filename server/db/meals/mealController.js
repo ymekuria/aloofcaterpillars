@@ -109,7 +109,8 @@ module.exports = {
   viewPending: function(req, res, next) {
     //this is where the user can view all of their foods that have a pending status. query database for 
     //meals with pending status for this user
-    findAllMeals({creator: req.body.username, status: 'pending'})
+    console.log('req is ', req)
+    findAllMeals({creator: 'Bob', status: 'pending'})
       .then(function(meals) {
         //send back the meals in json
         res.json(200, meals);

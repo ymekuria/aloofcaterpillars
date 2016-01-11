@@ -35,8 +35,8 @@ angular.module('factories', ['ngMaterial', 'ngMessages'])
     return $http({
       method:'GET',
       url:'/api/browse'
-    }).success(function(data){
-      return data;
+    }).success(function(resp){
+      return resp.data;
     }).error(function(){
       alert('error');
     })
@@ -66,8 +66,7 @@ angular.module('factories', ['ngMaterial', 'ngMessages'])
     return $http({
       method: 'GET',
       url: 'api/viewpending',
-      data: user
-    }).then(function(resp) {
+    }).then(function(resp) {      
       return resp.data
     })
   }
@@ -97,6 +96,7 @@ angular.module('factories', ['ngMaterial', 'ngMessages'])
     ingredients: ingredients,
     restrictions: restrictions,
     getAllMeals: getAllMeals,
+    getUserMeals: getUserMeals,
     makeReq: makeReq,
     pendingReq: pendingReq,
     searchByIngredient: searchByIngredient,
