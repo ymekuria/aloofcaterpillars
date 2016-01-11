@@ -16,7 +16,7 @@ angular.module('create', [])
   */
       $scope.userInput = angular.copy(meal)
       $scope.data.creator = $scope.userInput.creator
-      $scope.data.description = $scope.userInput.description
+      $scope.data.title = $scope.userInput.title
       $scope.data.quantity = $scope.userInput.quantity
       console.log($window.localStorage.getItem('com.oneAppUser'))
       

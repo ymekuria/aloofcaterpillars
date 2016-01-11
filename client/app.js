@@ -41,7 +41,11 @@ angular.module('oneApp', [
     templateUrl: '/browse/viewReq.html',
     controller: 'viewCtrl',
     authenticate: true
-  });
+  })
+  .when('/logout', {
+    templateUrl: '/auth/signin.html',
+    controller: 'AuthController'  
+  })
 
   $httpProvider.interceptors.push('AttachTokens');
 })

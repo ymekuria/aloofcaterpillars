@@ -47,33 +47,30 @@
       </div>
     </form>
   </div>
-  <div ng-repeat='meal in data' | filter: user.input>
-    <div class='card'>
-      <div flex="100" flex-sm="100" flex-xs="100" layout="row">
-        
-        <div class ="back-text">
-          <md-card>
-          <md-card-title>
-          <md-card-title-text>
-          <span class="md-headline">{{meal.creator}}'s {{ meal.description }}</span>
-          </md-card-title-text>
-          <md-card-actions layout="column" layout-align="end center">
-          
-          <fmp-card class="card" id="cardID" suffix="right" small-card-width="200px" small-card-height="50px" front-caption="Request" ng-cloak>
-          <p> {{meal.description}} </p>
-          <md-button ng-click="makeRequest(meal)">Request</md-button>
-          
-          </fmp-card>
-          <fmp-card class="card" id="cardID" suffix="right" small-card-width="200px" small-card-height="50px" front-caption="Favorites" ng-cloak>
-          <md-button>Add to favorites</md-button>
-          </fmp-card>
-          </md-card-actions>
-          </md-card-title>
-          </md-card>
-        </div>
-        
+
+<div layout='row'>
+  <div ng-repeat='meal in data' layout="column">
+    <div class='figure'>
+      <div id="effect-1">
+        <div class="two-col col-row clearfix">
+          <div class="col col-1-2">
+            <figure>
+              <img src="http://www.bonappetit.com/wp-content/uploads/2012/06/tacos-646.jpg" alt="">
+              <figcaption>
+              <h3>{{meal.description}}</h3>
+              <span><button ng-click="makeRequest(meal)">Request from {{meal.creator}}
+                </button>
+              </span>
+              </figcaption>
+            </figure>
+          </div>
+          <h2>{{meal.protein}}</h2>
+
       </div>
+      
     </div>
-    </div> <!-- last div for the ng-repeat DemoCtrl -->
-    </div><!-- last div for the ng-controller DemoCtrl -->
+  </div>
+  </div>
+    </div>
+  </div>
     </fmp-card>

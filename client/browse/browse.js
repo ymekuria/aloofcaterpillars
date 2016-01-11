@@ -38,7 +38,6 @@ angular
         username: $window.localStorage.getItem('com.oneAppUser'),
         meal: meal
       }
-
       Meals.makeReq(req).then(function(data) {
         alert('Made the request')
       })
