@@ -2,7 +2,8 @@
 
 var expect = require('chai').expect;
 var mongoose = require('mongoose');
-var User = require('/../server/db/users/user.js')
+var userController = require('/../server/db/users/userController.js')
+var mealController = require('/../server/db/meals/mealController.js')
 
 var dbURI = 'mongodb://localhost/greenfield';
 
@@ -23,6 +24,7 @@ describe('User Controller', function () {
 
   beforeEach(function (done) {
     clearDB(function () {
+      // seed the database
       var users = [{
        username: 'Yoni',
        password: 'test'
@@ -42,19 +44,32 @@ describe('User Controller', function () {
     });
   });
 
-  it('should have a method that creates a user', function (done) {
-    // TODO: Write test(s) for a method exported by `userController` that behaves as described one line above
-    // HINT: The `done` passed in is quite important...
-    var result;
-    var callback = function(data){
-      result = data;
-      expect(result.nModified).to.equal(1);
+  it('should be able to create a new user and save it to the db', function (done) {
+    var newUser = {
+      name: 'Frank',
+      password: 'test'
     };
-    User.create({
-      username: 'Kari',
-      password: 'food'
-    }, callback);
-    done(); 
+
+    // userController.create(newJob, function (job) {
+    //   Job.find(function (err, jobs) {
+    //     expect(jobs.length).to.equal(5);
+    //     done();
+    //   });
+    // });
   });
+
+  it('should be able to signin a user', function (done) {
+    // jobController.getHighPayingJobs(function (jobs) {
+    //   expect(jobs.length).to.be.equal(3);
+    //   done();
+    // });
+  });
+
+  it('should be able to register a new user', function (done) {
+    // jobController.getHighPayingJobs(function (jobs) {
+    //   expect(jobs.length).to.be.equal(3);
+    //   done();
+    // });
+  });  
   
 })
