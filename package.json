@@ -4,7 +4,7 @@
   "description": "Greenfield Project",
   "main": "index.js",
   "scripts": {
-    "test": "mocha specs/APIspec.js"
+    "test": "mocha specs/apispec.js"
   },
   "repository": {
     "type": "git",
