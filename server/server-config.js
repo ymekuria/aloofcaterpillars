@@ -41,16 +41,23 @@ var checkUser = function (req,res,next) {
 };
 
 
+app.get('/api/signin', UserController.signin);
 app.post('/api/signin', UserController.signin);
 
-app.get('/api/signin', UserController.signin);
 
 
 app.get('/api/request', checkUser /*....*/);
-
 app.post('/api/register', UserController.create)
 
+
+app.post('/api/create', checkUser, MealController.create);
 app.get('/api/browse', MealController.allMeals) 
+
+app.get('/api/usermeals', checkUser, MealController.allMeals);
+
+app.put('/api/makerequest', checkUser, MealController.makeRequest)
+
+app.get('/api/viewpending', MealController.viewPending)
 
 // app.post('/api/request', checkUser /*....*/);
 
@@ -76,7 +83,6 @@ app.get('/api/browse', MealController.allMeals)
 // app.get('/api/browse', MealController.allMeals);
 
 // // this endpoint puts a meal to the db
-app.post('/api/create', checkUser, MealController.create);
 
 // TODO: Inquire about logout routing -- if user wants to logout, end their session and send them to signin
 app.get('/api/logout', function(req, res) {

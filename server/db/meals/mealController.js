@@ -19,7 +19,8 @@ module.exports = {
   			  title: req.body.title,
   			  protein: req.body.protein,
   			  creator: req.body.creator,
-  			  consumer: req.body.consumer
+  			  consumer: req.body.consumer,
+          status: 'none'
 		    }).then(function(){
           res.send(201,'success');
         });
@@ -51,13 +52,29 @@ module.exports = {
   //given an object containing a user (the prospective consumer) and the meal being requested) 
   makeRequest: function(req, res, next) {
     //find the prospective meal according to the title of the meal instance provided
-    findMeal({title: req.body.meal.title})
+    var description = req.body.meal.description
+    var consumer = req.body.username
+    console.log('description is', description, 'username is ', consumer)
+
+    findMeal({description: description})
       .then(function(meal) {        
+        console.log('found meal is', meal)
         //update the meal status
         meal.status = 'pending';
         //add the consumer (username from the user instance input) to the meal's consumer array
-        meal.consumers.push(req.body.user.username);
-        res.send(201) 
+        meal.consumers.push(consumer);
+        return meal
+      })
+      .then(function(changed) {
+        console.log('we changed', changed)
+        changed.save(function(err, saved) {
+          if (err) { 
+            next(err)
+          } else {
+            res.json(saved)
+          }
+        })
+
       })
       .fail(function(error) {
         next(error);
@@ -92,7 +109,8 @@ module.exports = {
   viewPending: function(req, res, next) {
     //this is where the user can view all of their foods that have a pending status. query database for 
     //meals with pending status for this user
-    findAllMeals({creator: req.body.username, status: 'pending'})
+    console.log('req is ', req)
+    findAllMeals({creator: 'Bob', status: 'pending'})
       .then(function(meals) {
         //send back the meals in json
         res.json(200, meals);

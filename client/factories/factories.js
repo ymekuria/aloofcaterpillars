@@ -35,18 +35,18 @@ angular.module('factories', ['ngMaterial', 'ngMessages'])
     return $http({
       method:'GET',
       url:'/api/browse'
-    }).success(function(data){
-      return data;
+    }).success(function(resp){
+      return resp.data;
     }).error(function(){
       alert('error');
     })
   }
 
-  var makeReq = function(user) {
+  var makeReq = function(req) {
     return $http({
       method: 'PUT',
       url: 'api/makerequest',
-      data: user
+      data: req
     }).then(function(resp) {
       return resp.data
     })
@@ -66,8 +66,7 @@ angular.module('factories', ['ngMaterial', 'ngMessages'])
     return $http({
       method: 'GET',
       url: 'api/viewpending',
-      data: user
-    }).then(function(resp) {
+    }).then(function(resp) {      
       return resp.data
     })
   }
@@ -97,6 +96,7 @@ angular.module('factories', ['ngMaterial', 'ngMessages'])
     ingredients: ingredients,
     restrictions: restrictions,
     getAllMeals: getAllMeals,
+    getUserMeals: getUserMeals,
     makeReq: makeReq,
     pendingReq: pendingReq,
     searchByIngredient: searchByIngredient,
@@ -117,7 +117,8 @@ angular.module('factories', ['ngMaterial', 'ngMessages'])
           data: user
         })
         .then(function(resp) {
-          return resp.data.token;
+          console.log(resp)
+          return resp.data;
         });
     };
 
@@ -128,7 +129,7 @@ angular.module('factories', ['ngMaterial', 'ngMessages'])
           data: user
         })
         .then(function(resp) {
-          return resp.data.token;
+          return resp.data.token
         });
     };
 

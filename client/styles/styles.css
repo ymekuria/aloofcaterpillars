@@ -24,3 +24,74 @@
 #left { float:left; }
 #right { float:right; }
 ul { overflow:auto; }
+
+
+
+/* Allows for all the figure sliding goodness*/
+figure {
+    margin: 0;
+    position: relative;
+    width: 60%;
+    display: inline-block;
+}
+figure img {
+    display: block;
+    position: relative;
+    z-index: 10;
+    max-width: 100%;
+    height: auto;
+}
+figure figcaption {
+    display: block;
+    position: absolute;
+    z-index: 5;
+}
+figure h3 {
+    color: #fff;
+    font-size: 22px;
+    line-height: 1.2;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+figure span {
+    color: #b2cce1;
+    display: block;
+    line-height: 1.2;
+}
+figure a.close-caption {
+    display: block;
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    text-align: center;
+    line-height: 44px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #315a7d;
+}
+figure a.close-caption.hidden {
+    display: none
+}
+
+
+
+#effect-1 a.close-caption {
+    bottom: 10px;
+    right: 10px;
+}
+#effect-1 figure {
+    background-color: steelblue;
+}
+#effect-1 figcaption {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+}
+#effect-1 figure img {
+    transition: all 0.3s;
+}
+.no-touch #effect-1 figure:hover img,
+#effect-1 figure.hover img {
+    transform: translateY(-90px);
+}

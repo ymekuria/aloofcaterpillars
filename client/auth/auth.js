@@ -4,7 +4,6 @@ angular.module('auth', [])
   $scope.user = {};
 
   $scope.signup = function () {
-    console.log($scope.user)
     Auth.signup($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.oneApp', token);
@@ -16,10 +15,13 @@ angular.module('auth', [])
   };
 
   $scope.signin = function () {
+    console.log("sign in info", $scope.user)
     Auth.signin($scope.user)
       .then(function (token) {
-        $window.localStorage.setItem('com.oneApp', token);
-        $location.path('/view');
+        console.log(token)
+        $window.localStorage.setItem('com.oneApp', token.token)
+        $window.localStorage.setItem('com.oneAppUser', token.username);
+        $location.path('/browse');
       })
       .catch(function (error) {
         console.error(error);
@@ -33,13 +35,12 @@ angular.module('auth', [])
   //     })
   // }
 
-
-//   $scope.createUser = function(user) {
-//     console.log(user)
-//     Meals.register(user).then(function(d) {
-//       console.log("user is ", d)
-//       return d;
-//     })
-// }
+  //   $scope.createUser = function(user) {
+  //     console.log(user)
+  //     Meals.register(user).then(function(d) {
+  //       console.log("user is ", d)
+  //       return d;
+  //     })
+  // }
 
 });
