@@ -78,6 +78,8 @@ module.exports = {
 
   //given TWO meal instances, need to update the status to sold to confirm transaction
   confirmRequest: function(req, res, next) {
+    var mealOne;
+    var mealTwo;
     //Need to find both meal instances instances in the database - start with the first 
     findMeal({title: req.body.meal1.title})
       .then(function(meal) {
@@ -87,6 +89,7 @@ module.exports = {
         meal.consumers = [];
         //add final consumer back to the consumers array
         meal.consumers.push(req.body.meal2.creator);
+        mealOne = meal; 
         meal.save(function(err){
             if (!err){
                 console.log("updated meal1!");
@@ -108,6 +111,7 @@ module.exports = {
         //add final consumer back to the consumers array
         meal.consumers.push(req.body.meal1.creator);
         //save the updates in the database
+        mealTwo = meal; 
         meal.save(function(err){
             if (!err){
                 console.log("updated meal2!");
@@ -116,7 +120,7 @@ module.exports = {
                 console.log(err);
             }
         });
-        res.send(201, 'both updated to sold');
+        res.send(201, {meal1: mealOne, meal2: mealTwo});
       })
       .fail(function(error) {
         next(error);
