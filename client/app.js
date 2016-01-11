@@ -33,6 +33,10 @@ angular.module('oneApp', [
     templateUrl: '/auth/register.html',
     controller: 'AuthController'
   })
+  .when('/confirmreq', {
+    templateUrl: '/browse/viewReq.html',
+    controller: 'viewCtrl'
+  })
   .when('/view', {
     templateUrl: '/browse/viewReq.html',
     controller: 'viewCtrl',
