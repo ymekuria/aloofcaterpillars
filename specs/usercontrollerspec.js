@@ -50,24 +50,24 @@ describe('User Controller', function () {
       password: 'test'
     };
 
-    // userController.create(newJob, function (job) {
-    //   Job.find(function (err, jobs) {
-    //     expect(jobs.length).to.equal(5);
+    // userController.register(newUser, function (job) {
+    //   user.find(function (err, jobs) {
+    //     expect(users.length).to.equal(5);
     //     done();
     //   });
     // });
   });
 
   it('should be able to signin a user', function (done) {
-    // jobController.getHighPayingJobs(function (jobs) {
-    //   expect(jobs.length).to.be.equal(3);
+    // userController.signin(function (users) {
+    //   expect(users.length).to.be.equal(3);
     //   done();
     // });
   });
 
   it('should be able to register a new user', function (done) {
-    // jobController.getHighPayingJobs(function (jobs) {
-    //   expect(jobs.length).to.be.equal(3);
+    // userController.register(function (users) {
+    //   expect(users.length).to.be.equal(3);
     //   done();
     // });
   });  

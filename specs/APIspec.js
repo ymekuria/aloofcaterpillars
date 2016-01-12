@@ -43,6 +43,7 @@ describe('RESTful API', function () {
   //   Users.setAll(usersCopy);
   // });
 
+// TODO 
   // describe('/api/signin', function () {
 
   //   describe('GET', function () {
@@ -84,19 +85,17 @@ describe('RESTful API', function () {
     describe('POST', function () {
 
       var newUser = {
-        "name": "yoni",
-        "email": "yoni@yoni.co"
+        name: 'yoni',
+        email: 'yoni@yoni.co'
       };
-
-
-
 
       it('responds with a 201 (Created) when a users signs up', function (done) {
 
         request(app)
           .post('/api/signin')
-          .send(newUser) 
-          .expect(201, done);
+          .send({})
+          .expect('Content-Type', "text/plain; charset=utf-8", done);
+         
 
       });
 
@@ -108,10 +107,11 @@ describe('RESTful API', function () {
 
     describe('GET', function () {
 
-      it('responds with a 200 (OK)', function (done) {
+      it('responds with a 200 (OK) and return a JSON object', function (done) {
 
         request(app)
           .get('/api/browse')
+          .expect('Content-Type', /json/)
           .expect(200, done);
 
       });
@@ -125,10 +125,11 @@ describe('RESTful API', function () {
 
     describe('GET', function () {
 
-      it('responds with a 200 (OK)', function (done) {
+      it('responds with a 200 (OK) and returns a JSON object', function (done) {
 
         request(app)
           .get('/api/viewpending')
+          .expect('Content-Type', /json/)
           .expect(200, done);
 
       });
@@ -141,11 +142,12 @@ describe('RESTful API', function () {
 
     describe('GET', function () {
 
-      it('responds with a 200 (OK)', function (done) {
+      it('responds with a 200 (OK) and returns a JSON object', function (done) {
 
         request(app)
           .get('/api/viewuser')
           .send({title: 'good food' })
+          .expect('Content-Type', /json/)
           .expect(200, done);
 
       });
