@@ -19,8 +19,7 @@ module.exports = {
   			  title: req.body.title,
   			  protein: req.body.protein,
   			  creator: req.body.creator,
-  			  consumer: req.body.consumer,
-          status: 'none'
+  			  consumer: req.body.consumer
 		    }).then(function(){
           res.send(201,'success');
         });
@@ -28,7 +27,7 @@ module.exports = {
 
   allMeals: function(req, res, next) {
     console.log('You accessed all meals')
-    findAllMeals({})
+    findAllMeals({status: 'false'})
       .then(function(meals) {
         res.json(200, meals);
       })
@@ -53,7 +52,7 @@ module.exports = {
   //given an object containing a user (the prospective consumer) and the meal being requested) 
   makeRequest: function(req, res, next) {
     //find the prospective meal according to the title of the meal instance provided
-    findMeal({description: req.body.meal.description})
+    findMeal({title: req.body.meal.title})
       .then(function(meal) {   
         // console.log(req.body.meal);  
         console.log(meal);   
@@ -132,11 +131,10 @@ module.exports = {
   viewPending: function(req, res, next) {
     //this is where the user can view all of their foods that have a pending status. query database for 
     //meals with pending status for this user
-    findAllMeals({creator: req.body.username, status: 'pending'})
+    findAllMeals({status: 'pending'})
       .then(function(meals) {
         //send back the meals in json
-        console.log(req.body);
-        res.json(200, 'worked');
+        res.json(200, meals);
       })
       .fail(function(error) {
         next(error);

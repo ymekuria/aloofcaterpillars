@@ -2,12 +2,14 @@ angular
   .module('browse',['ngMaterial', 'ngMessages', 'factories', 'ngAnimate', 'fmp-card'])
   .controller('browseCtrl',   function($scope, $window, Meals) {
 
-
     $scope.user = {
       input: '',
     };
 
-    $scope.data = {}
+    $scope.activeUser = $window.localStorage.getItem('com.oneAppUser');
+
+    $scope.data;
+    $scope.browseMeals = [];
 
     $scope.proteins = [
       { category: 'meat', name: 'Chicken' },
@@ -26,12 +28,15 @@ angular
 
     Meals.getAllMeals().then(function(data){
       console.log('Trying to get all meals')
-      $scope.data = data.data
+      $scope.data = data.data      
     })
-
-    // Meals.getUserMeals($scope.user).then(function(data) {
-    //   $scope.userMeals = data.data
-    // })
+    .then(function() {
+      for (var i = 0; i < $scope.data.length; i++) {
+        if ($scope.activeUser !== $scope.data[i].creator) {
+          $scope.browseMeals.push($scope.data[i])
+        }
+      }
+    })
 
     $scope.makeRequest = function(meal) {            
       var req = {
@@ -42,6 +47,7 @@ angular
         alert('Made the request')
       })
     }
+
 
     $scope.offerUserMeals = function() {
       console.log('offered meals')

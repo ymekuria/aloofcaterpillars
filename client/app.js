@@ -16,6 +16,10 @@ angular.module('oneApp', [
     templateUrl: '/browse/browse.html',
     controller: 'browseCtrl'
   })
+  .when('/home', {
+    templateUrl: './browse/browse.html',
+    controller: 'AuthController'
+  })
   .when('/signin', {
     templateUrl: '/auth/signin.html',
     controller: 'AuthController'
@@ -40,7 +44,7 @@ angular.module('oneApp', [
   .when('/view', {
     templateUrl: '/browse/viewReq.html',
     controller: 'viewCtrl',
-    authenticate: true
+    authenticate: true  
   })
   .when('/logout', {
     templateUrl: '/auth/signin.html',

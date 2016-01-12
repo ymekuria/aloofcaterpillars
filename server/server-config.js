@@ -45,6 +45,8 @@ app.post('/api/register', UserController.register);
 // this endpoint returns all the meals objects form the db. TODO check with Jonathon to sync endpoint name 
 app.get('/api/browse', MealController.allMeals);
 
+app.post('/api/create', MealController.create)
+
 // this endpoint returns all the meal instances.
 app.get('/api/usermeals', checkUser, MealController.allMeals);
 
