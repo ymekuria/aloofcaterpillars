@@ -13,7 +13,7 @@ db.on('error', console.error.bind(console, 'CONNECTION ERROR'));
 
 //set up listener for success to know that connection was successful
 db.once('open', function() {
-  console.log('The database is connected'); 
+  console.log('The database is connected here'); 
 }); 
 
 //export db
