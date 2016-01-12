@@ -51,8 +51,12 @@ angular.module('viewReq', [])
 
   function confirmTrade(meal) {
     var sendReq = {
-        meal1: $scope.tradeMeal,
-        meal2: meal
+        meal1: {title: $scope.tradeMeal.title,
+                creator: $scope.tradeMeal.creator},
+
+        meal2: {title: meal.title,
+                creator: meal.creator
+              }
     }
     Meals.confirmReq(sendReq).then(function() {
       $location.path('/browse')

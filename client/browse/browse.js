@@ -41,7 +41,7 @@ angular
     $scope.makeRequest = function(meal) {            
       var req = {
         username: $window.localStorage.getItem('com.oneAppUser'),
-        meal: meal
+        meal: meal.title
       }
       Meals.makeReq(req).then(function(data) {
         alert('Made the request')

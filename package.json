@@ -31,6 +31,8 @@
     "mongoose": "^4.3.4",
     "morgan": "^1.6.1",
     "nodemon": "^1.2.1",
+    "multiparty": "^4.1.2",
+    "ng-file-upload": "^11.0.2",
     "q": "^1.4.1",
     "supertest": "^1.1.0"
   }

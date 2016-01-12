@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var db = require('../dbconfig');
 
 var mealSchema = mongoose.Schema({
-  picture: String, 
+  picture: '', 
   description: String,
   title: String,
   protein: String,

@@ -1,3 +1,13 @@
+html {
+    font-size: 25px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 25px;
+}
+
 /************** deafault css******************/
 
 .floatleft {
@@ -63,7 +73,7 @@ body {}
 p {
     font-family: 'Lato', sans-serif;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 20px;
 }
 /************** main css ******************/
 /************** header css ******************/
@@ -186,7 +196,7 @@ p {
     border-radius: 5px;
     display: inline-block;
     padding: 10px 20px;
-    color: #fff;
+    color: #36C36E;
     margin-top: 20px;
     text-transform: uppercase
 }
@@ -350,4 +360,10 @@ p {
     margin-top: -15px;
     position: absolute;
     top: 50%;
+}
+
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font: inherit;
+    color: #36C36E;
 }

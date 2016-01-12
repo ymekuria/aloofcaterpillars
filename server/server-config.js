@@ -39,7 +39,6 @@ var checkUser = function (req,res,next) {
 // Look into having both get and post
 app.get('/api/signin', UserController.signin);
 app.post('/api/signin', UserController.signin);
-
 app.post('/api/register', UserController.register);
 
 // this endpoint returns all the meals objects form the db. TODO check with Jonathon to sync endpoint name 
