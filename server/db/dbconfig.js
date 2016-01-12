@@ -2,10 +2,10 @@ var mongoose = require('mongoose');
 var Q = require('q'); 
 //create mongoose database connection with name database
 
-var connectionPath = process.env.MONGOLAB_URI || 'mongodb://localhost/'; 
-//var connectionPath = process.env.MONGOLAB_URI || 'mongodb://localhost/'; 
+var connectionPath = process.env.MONGOLAB_URI || 'mongodb://localhost/greenfield'; 
+// var connectionPath = process.env.MONGOLAB_URI || 'mongodb://localhost/'; 
 // 'mongodb://heroku_knr1s9f3:62topomn5eqkt44d74lrivho0a@ds043605.mongolab.com:43605/heroku_knr1s9f3'
-mongoose.connect('mongodb://heroku_knr1s9f3:62topomn5eqkt44d74lrivho0a@ds043605.mongolab.com:43605/heroku_knr1s9f3');
+mongoose.connect(connectionPath);
 
 //save connection in variable db
 var db = mongoose.connection;
