@@ -7,7 +7,7 @@
 				<div class="two-col col-row clearfix">
 					<div class="col col-1-2">
 						<figure>
-							<img src="http://www.bonappetit.com/wp-content/uploads/2012/06/tacos-646.jpg" alt="">
+							<img ng-src="data:image/JPEG;base64,{{meal.picture}}"/>
 							<figcaption>
 							<h3>{{meal.title}}</h3>
 							<span><button ng-click="vm.handleButtonClick(meal)">{{meal.consumers[0]}}'s Meals
@@ -29,7 +29,7 @@
 				<div class="two-col col-row clearfix">
 					<div class="col col-1-2">
 						<figure>
-							<img src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Chatterbox_ChickenRice.JPG" alt="">
+							<img ng-src="data:image/JPEG;base64,{{meal.picture}}"/>
 							<figcaption>
 							<h3>{{meal.title}}</h3>
 							<span><button ng-click="vm.handleButtonClick(meal)">Go Back

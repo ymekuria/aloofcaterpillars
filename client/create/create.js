@@ -13,7 +13,7 @@ angular.module('create', [])
       data: {meal: meal, creator: $scope.meal.creator, title: $scope.meal.title, quantity: $scope.meal.quantity},
     });
     meal.upload.then(function (resp) {
-      console.log('Meal Created')
+      alert('MEAL CREATED')
 
       });
     }

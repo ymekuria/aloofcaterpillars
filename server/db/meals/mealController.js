@@ -84,7 +84,7 @@ module.exports = {
     makeRequest: function(req, res, next) {
         //find the prospective meal according to the title of the meal instance provided
         findMeal({
-                title: req.body.meal.title
+                title: req.body.meal
             })
             .then(function(meal) {
                 // console.log(req.body.meal);  
@@ -156,10 +156,7 @@ module.exports = {
                         console.log(err);
                     }
                 });
-                res.send(201, JSON.stringify({
-                    meal1: mealOne,
-                    meal2: mealTwo
-                }));
+                res.send(201, console.log('Successful Update'));
             })
             .fail(function(error) {
                 next(error);
