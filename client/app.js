@@ -7,7 +7,9 @@ angular.module('oneApp', [
   'ngMaterial',
   'fmp-card',
   'viewReq',
-  'ngAnimate'
+  'ngAnimate',
+  'base64',
+  'ngFileUpload'
   ])
 
 .config(function($routeProvider, $httpProvider) {
