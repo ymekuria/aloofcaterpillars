@@ -2,11 +2,13 @@ angular.module('auth', [])
 
 .controller('AuthController', function ($scope, $window, $location, Auth) {
   $scope.user = {};
-
+  $scope.click = false;
+  
   //if you're coming from logout, destroy token
 
-  $window.localStorage.setItem('com.oneApp', {})
-  $window.localStorage.setItem('com.oneAppUser', "")
+  $scope.clicked = function() {
+    $scope.click = true;
+  }
 
   $scope.signup = function () {
     Auth.signup($scope.user)
@@ -31,5 +33,13 @@ angular.module('auth', [])
       .catch(function (error) {
         console.error(error);
       });
+  }
+
+  $scope.signout = function() {
+    console.log('clicked')
+    $window.localStorage.setItem('com.oneApp', {})
+    $window.localStorage.setItem('com.oneAppUser', "")
+    $location.path('/signin')
+
   };
 });

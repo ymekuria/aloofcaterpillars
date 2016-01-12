@@ -1,9 +1,11 @@
 angular.module('viewReq', [])
 
-.controller('viewCtrl', function($scope, Meals, $compile, $window) {
+.controller('viewCtrl', function($scope, Meals, $compile, $location, $window) {
   //TODO: we need to figure out current user and pass that in the get request
-  $scope.user = $window.localStorage.getItem('com.oneAppUser')
+  $scope.user = $window.localStorage.getItem('com.oneAppUser').toLowerCase();
+
   $scope.pending = [];
+
   $scope.clicked = false;
   $scope.allData;
   $scope.activeUser = []
@@ -11,10 +13,6 @@ angular.module('viewReq', [])
 
   $scope.tradeMeal = ''
   $scope.showHTML = false;
-
-  $scope.$on("receivedPageContent", function(event, args) {
-    console.log('new page content received after DB call')
-  })
 
   var vm = this;
   this.handleButtonClick = handleButtonClick
@@ -25,6 +23,15 @@ angular.module('viewReq', [])
   function init(){
     $scope.showHTML = false;
   }
+
+  Meals.pendingReq().then(function(response) {
+    var getData = response
+    for (var i = 0; i<getData.length;i++) {
+      if (getData[i].creator.toLowerCase() === $scope.user) {
+        $scope.pending.push(getData[i])
+      }
+    }
+  })
 
   function handleButtonClick(meal){
     $scope.activeMeals = []
@@ -43,13 +50,12 @@ angular.module('viewReq', [])
   }
 
   function confirmTrade(meal) {
-    console.log($scope.tradeMeal, meal)
     var sendReq = {
         meal1: $scope.tradeMeal,
         meal2: meal
     }
     Meals.confirmReq(sendReq).then(function() {
-      console.log('request cofirmed. Send me to a confirm page')
+      $location.path('/browse')
     })
 
   }
@@ -59,16 +65,7 @@ angular.module('viewReq', [])
   //this is really messy, but I wasn't sure if we could issue a GET request filter
   //When this was done in backbone, we filtered it on the front end. Doing that below
 
-  Meals.getAllMeals().then(function(response) {
-    console.log('$scope user is', $scope.user)
-    var getData = response.data
-    for (var i = 0; i<getData.length;i++) {
-      console.log('getData creator', getData[i].creator)
-      if (getData[i].status ==='pending' && $scope.user === getData[i].creator.toLowerCase()) {
-        $scope.pending.push(getData[i])
-      }
-    }
-  })
+
 
   $scope.showUser = function(meal) {
     //Get that meal's data
@@ -83,7 +80,6 @@ angular.module('viewReq', [])
       }
     }).then(function() {
       $scope.clicked = true;
-      console.log($scope.clicked)      
     })
   }
 })

@@ -80,7 +80,7 @@ figure a.close-caption.hidden {
     right: 10px;
 }
 #effect-1 figure {
-    background-color: steelblue;
+    background-color: #36C36E;
 }
 #effect-1 figcaption {
     bottom: 0;
@@ -94,4 +94,10 @@ figure a.close-caption.hidden {
 .no-touch #effect-1 figure:hover img,
 #effect-1 figure.hover img {
     transform: translateY(-90px);
+}
+
+button {
+    color: black;
+
+
 }

@@ -49,7 +49,7 @@
   </div>
 
 <div layout='row'>
-  <div ng-repeat='meal in data' layout="column">
+  <div ng-repeat="meal in browseMeals" layout="column">
     <div class='figure'>
       <div id="effect-1">
         <div class="two-col col-row clearfix">
@@ -57,7 +57,7 @@
             <figure>
               <img src="http://www.bonappetit.com/wp-content/uploads/2012/06/tacos-646.jpg" alt="">
               <figcaption>
-              <h3>{{meal.description}}</h3>
+              <h3>{{meal.title}}</h3>
               <span><button ng-click="makeRequest(meal)">Request from {{meal.creator}}
                 </button>
               </span>
