@@ -3,7 +3,7 @@ var Q = require('q');
 //create mongoose database connection with name database
 
 var connectionPath = process.env.MONGOLAB_URI || 'mongodb://localhost/'; 
-mongoose.connect(connectionPath + 'greenfield');
+mongoose.connect(connectionPath);
 
 //save connection in variable db
 var db = mongoose.connection;
@@ -13,7 +13,7 @@ db.on('error', console.error.bind(console, 'CONNECTION ERROR'));
 
 //set up listener for success to know that connection was successful
 db.once('open', function() {
-  console.log('The database is connected'); 
+  console.log('The database is  connected'); 
 }); 
 
 //export db
