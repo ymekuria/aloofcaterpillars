@@ -1,9 +1,8 @@
 # aloofcaterpillars
-Greenfield Project 
 
 What is this product?
 
-One-for-One spices up the the Hack Reactor student's experience by allowing them to trade meals with their peers. Users can post meals that they have to offer and view and request those offered up by other users.
+One-for-One spices up meals people expierence in groups or at the workplace by allowing them to trade meals with their peers. Users can post meals that they have to offer and view and request those offered up by other users.
 
 Getting Started
 
